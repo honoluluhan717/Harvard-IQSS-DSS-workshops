@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>R Introduction | Data Science Workshops</title>
+  <meta name="description" content="R Introduction | Data Science Workshops" />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="R Introduction | Data Science Workshops" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="R Introduction | Data Science Workshops" />
+  <meta name="github-repo" content="IQSS/dss-workshops" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R Introduction | Data Science Workshops" />
+  
+  <meta name="twitter:description" content="R Introduction | Data Science Workshops" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="Rinstall.html"/>
+<link rel="next" href="Rmodels.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Science Workshop Materials</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Table of Contents</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#contributors"><i class="fa fa-check"></i>Contributors</a></li>
+</ul></li>
+<li class="part"><span><b>I General</b></span></li>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html"><i class="fa fa-check"></i>Data Science Tools</a><ul>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#tools-for-working-with-data"><i class="fa fa-check"></i>Tools for working with data</a></li>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#the-puzzle-pieces"><i class="fa fa-check"></i>The puzzle pieces</a><ul>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#data-analysis-building-blocks"><i class="fa fa-check"></i>Data analysis building blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#examples"><i class="fa fa-check"></i>Examples</a><ul>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#old-school-example"><i class="fa fa-check"></i>Old-school example</a></li>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#something-old-something-new"><i class="fa fa-check"></i>Something old &amp; something new</a></li>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#a-modern-version"><i class="fa fa-check"></i>A modern version</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#data-storage-retrieval"><i class="fa fa-check"></i>Data storage &amp; retrieval</a><ul>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#text-files"><i class="fa fa-check"></i>Text files</a></li>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#binary-files"><i class="fa fa-check"></i>Binary files</a></li>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#databases"><i class="fa fa-check"></i>Databases</a></li>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#distributed-file-storage"><i class="fa fa-check"></i>Distributed file storage</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#programming-languages-statistics-packages"><i class="fa fa-check"></i>Programming languages &amp; statistics packages</a><ul>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#programming-language-features"><i class="fa fa-check"></i>Programming language features</a></li>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#program-comparison"><i class="fa fa-check"></i>Program comparison</a></li>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#examples-read-data-from-a-file-summarize"><i class="fa fa-check"></i>Examples: Read data from a file &amp; summarize</a></li>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#examples-fit-a-linear-regression"><i class="fa fa-check"></i>Examples: Fit a linear regression</a></li>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#examples-extract-links-for-.html-file"><i class="fa fa-check"></i>Examples: Extract links for .html file</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#creating-reports"><i class="fa fa-check"></i>Creating reports</a><ul>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#markup-languages"><i class="fa fa-check"></i>Markup languages</a></li>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#word-processors"><i class="fa fa-check"></i>Word processors</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#text-editors-integrated-development-environments"><i class="fa fa-check"></i>Text editors &amp; Integrated Development Environments</a><ul>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#language-specific-editors-ides"><i class="fa fa-check"></i>Language specific editors &amp; IDEs</a></li>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#general-purpose-editors-ides"><i class="fa fa-check"></i>General purpose editors &amp; IDEs</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#literate-programming-notebooks"><i class="fa fa-check"></i>Literate programming &amp; notebooks</a><ul>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#literate-programming"><i class="fa fa-check"></i>Literate programming</a></li>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#notebooks"><i class="fa fa-check"></i>Notebooks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#big-data-annoying-data-computationally-intensive-methods"><i class="fa fa-check"></i>Big data, annoying data, &amp; computationally intensive methods</a><ul>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#computing-clusters-at-harvard"><i class="fa fa-check"></i>Computing clusters at Harvard</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#wrap-up"><i class="fa fa-check"></i>Wrap up</a><ul>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#feedback"><i class="fa fa-check"></i>Feedback</a></li>
+<li class="chapter" data-level="" data-path="DataScienceTools.html"><a href="DataScienceTools.html#resources"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II R</b></span></li>
+<li class="chapter" data-level="" data-path="Rinstall.html"><a href="Rinstall.html"><i class="fa fa-check"></i>R Installation</a><ul>
+<li class="chapter" data-level="" data-path="Rinstall.html"><a href="Rinstall.html#troubleshooting-session"><i class="fa fa-check"></i>Troubleshooting session</a></li>
+<li class="chapter" data-level="" data-path="Rinstall.html"><a href="Rinstall.html#software"><i class="fa fa-check"></i>Software</a></li>
+<li class="chapter" data-level="" data-path="Rinstall.html"><a href="Rinstall.html#materials"><i class="fa fa-check"></i>Materials</a></li>
+<li><a href="Rinstall.html#installing-the-tidyverse">Installing the <code>tidyverse</code></a><ul>
+<li><a href="Rinstall.html#troubleshooting-tidyverse-installation">Troubleshooting <code>tidyverse</code> installation</a></li>
+</ul></li>
+<li><a href="Rinstall.html#installing-rmarkdown-optional">Installing <code>rmarkdown</code> (optional)</a></li>
+<li class="chapter" data-level="" data-path="Rinstall.html"><a href="Rinstall.html#resources-1"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html"><i class="fa fa-check"></i>R Introduction</a><ul>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#setup"><i class="fa fa-check"></i>Setup</a><ul>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#class-structure"><i class="fa fa-check"></i>Class Structure</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#prerequisites"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#goals"><i class="fa fa-check"></i>Goals</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#r-basics"><i class="fa fa-check"></i>R basics</a><ul>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#what-is-r"><i class="fa fa-check"></i>What is R?</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#why-use-r"><i class="fa fa-check"></i>Why use R?</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#how-does-r-work"><i class="fa fa-check"></i>How does R work?</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#interfaces"><i class="fa fa-check"></i>Interfaces</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#launch-a-session"><i class="fa fa-check"></i>Launch a session</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#exercise-0"><i class="fa fa-check"></i>Exercise 0</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#syntax-rules"><i class="fa fa-check"></i>Syntax rules</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#function-calls"><i class="fa fa-check"></i>Function calls</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#assignment"><i class="fa fa-check"></i>Assignment</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#asking-for-help"><i class="fa fa-check"></i>Asking for help</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#reading-data"><i class="fa fa-check"></i>Reading data</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#installing-using-packages"><i class="fa fa-check"></i>Installing &amp; using packages</a></li>
+<li><a href="Rintro.html#the-tidyverse">The <code>tidyverse</code></a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#readers-for-common-file-types"><i class="fa fa-check"></i>Readers for common file types</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#baby-names-data"><i class="fa fa-check"></i>Baby names data</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#exercise-1"><i class="fa fa-check"></i>Exercise 1</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#manipulating-data"><i class="fa fa-check"></i>Manipulating data</a><ul>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#filter-select-arrange"><i class="fa fa-check"></i>Filter, select, &amp; arrange</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#logical-relational-operators"><i class="fa fa-check"></i>Logical &amp; relational operators</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#exercise-2.1"><i class="fa fa-check"></i>Exercise 2.1</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#pipe-operator"><i class="fa fa-check"></i>Pipe operator</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#exercise-2.2"><i class="fa fa-check"></i>Exercise 2.2</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#plotting-data"><i class="fa fa-check"></i>Plotting data</a><ul>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#exercise-3"><i class="fa fa-check"></i>Exercise 3</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#creating-variables"><i class="fa fa-check"></i>Creating variables</a><ul>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#create-or-modify-columns"><i class="fa fa-check"></i>Create or modify columns</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#operating-by-group"><i class="fa fa-check"></i>Operating by group</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#recoding-variables"><i class="fa fa-check"></i>Recoding variables</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#exercise-4"><i class="fa fa-check"></i>Exercise 4</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#aggregating-variables"><i class="fa fa-check"></i>Aggregating variables</a><ul>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#exercise-5"><i class="fa fa-check"></i>Exercise 5</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#saving-work"><i class="fa fa-check"></i>Saving work</a><ul>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#saving-individual-datasets"><i class="fa fa-check"></i>Saving individual datasets</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#saving-multiple-datasets"><i class="fa fa-check"></i>Saving multiple datasets</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#saving-loading-workspaces"><i class="fa fa-check"></i>Saving &amp; loading workspaces</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#exercise-solutions"><i class="fa fa-check"></i>Exercise solutions</a><ul>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#ex-0-prototype"><i class="fa fa-check"></i>Ex 0: prototype</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#ex-1-prototype"><i class="fa fa-check"></i>Ex 1: prototype</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#ex-2.1-prototype"><i class="fa fa-check"></i>Ex 2.1: prototype</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#ex-2.2-prototype"><i class="fa fa-check"></i>Ex 2.2: prototype</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#ex-3-prototype"><i class="fa fa-check"></i>Ex 3: prototype</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#ex-4-prototype"><i class="fa fa-check"></i>Ex 4: prototype</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#ex-5-prototype"><i class="fa fa-check"></i>Ex 5: prototype</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#wrap-up-1"><i class="fa fa-check"></i>Wrap-up</a><ul>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#feedback-1"><i class="fa fa-check"></i>Feedback</a></li>
+<li class="chapter" data-level="" data-path="Rintro.html"><a href="Rintro.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html"><i class="fa fa-check"></i>R Regression Models</a><ul>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#setup-1"><i class="fa fa-check"></i>Setup</a><ul>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#class-structure-1"><i class="fa fa-check"></i>Class Structure</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#prerequisites-1"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#goals-1"><i class="fa fa-check"></i>Goals</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#launch-an-r-session"><i class="fa fa-check"></i>Launch an R session</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#packages"><i class="fa fa-check"></i>Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#modeling-workflow"><i class="fa fa-check"></i>Modeling workflow</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#r-modeling-ecosystem"><i class="fa fa-check"></i>R modeling ecosystem</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#before-fitting-a-model"><i class="fa fa-check"></i>Before fitting a model</a><ul>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#load-the-data"><i class="fa fa-check"></i>Load the data</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#examine-the-data"><i class="fa fa-check"></i>Examine the data</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#plot-the-data"><i class="fa fa-check"></i>Plot the data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#models-with-continuous-outcomes"><i class="fa fa-check"></i>Models with continuous outcomes</a><ul>
+<li><a href="Rmodels.html#why-is-the-association-between-expense-sat-scores-negative">Why is the association between expense &amp; SAT scores <em>negative</em>?</a></li>
+<li><a href="Rmodels.html#the-lm-class-methods">The <code>lm</code> class &amp; methods</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#ols-regression-assumptions"><i class="fa fa-check"></i>OLS regression assumptions</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#comparing-models"><i class="fa fa-check"></i>Comparing models</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#exercise-0-1"><i class="fa fa-check"></i>Exercise 0</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#interactions-factors"><i class="fa fa-check"></i>Interactions &amp; factors</a><ul>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#modeling-interactions"><i class="fa fa-check"></i>Modeling interactions</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#regression-with-categorical-predictors"><i class="fa fa-check"></i>Regression with categorical predictors</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#setting-factor-reference-groups-contrasts"><i class="fa fa-check"></i>Setting factor reference groups &amp; contrasts</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#exercise-1-1"><i class="fa fa-check"></i>Exercise 1</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#models-with-binary-outcomes"><i class="fa fa-check"></i>Models with binary outcomes</a><ul>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#logistic-regression"><i class="fa fa-check"></i>Logistic regression</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#logistic-regression-example"><i class="fa fa-check"></i>Logistic regression example</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#odds-ratios"><i class="fa fa-check"></i>Odds ratios</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#predicted-marginal-means"><i class="fa fa-check"></i>Predicted marginal means</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#exercise-2"><i class="fa fa-check"></i>Exercise 2</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#multilevel-modeling"><i class="fa fa-check"></i>Multilevel modeling</a><ul>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#multilevel-modeling-overview"><i class="fa fa-check"></i>Multilevel modeling overview</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#the-exam-data"><i class="fa fa-check"></i>The Exam data</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#the-null-model-icc"><i class="fa fa-check"></i>The null model &amp; ICC</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#adding-fixed-effects-predictors"><i class="fa fa-check"></i>Adding fixed-effects predictors</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#multiple-degree-of-freedom-comparisons"><i class="fa fa-check"></i>Multiple degree of freedom comparisons</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#random-slopes"><i class="fa fa-check"></i>Random slopes</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#test-the-significance-of-the-random-slope"><i class="fa fa-check"></i>Test the significance of the random slope</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#exercise-3-1"><i class="fa fa-check"></i>Exercise 3</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#exercise-solutions-1"><i class="fa fa-check"></i>Exercise solutions</a><ul>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#ex-0-prototype-1"><i class="fa fa-check"></i>Ex 0: prototype</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#ex-1-prototype-1"><i class="fa fa-check"></i>Ex 1: prototype</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#ex-2-prototype"><i class="fa fa-check"></i>Ex 2: prototype</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#ex-3-prototype-1"><i class="fa fa-check"></i>Ex 3: prototype</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#wrap-up-2"><i class="fa fa-check"></i>Wrap-up</a><ul>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#feedback-2"><i class="fa fa-check"></i>Feedback</a></li>
+<li class="chapter" data-level="" data-path="Rmodels.html"><a href="Rmodels.html#resources-3"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html"><i class="fa fa-check"></i>R Graphics</a><ul>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#setup-2"><i class="fa fa-check"></i>Setup</a><ul>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#class-structure-2"><i class="fa fa-check"></i>Class Structure</a></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#prerequisites-2"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#launch-an-r-session-1"><i class="fa fa-check"></i>Launch an R session</a></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#packages-1"><i class="fa fa-check"></i>Packages</a></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#goals-2"><i class="fa fa-check"></i>Goals</a></li>
+</ul></li>
+<li><a href="Rgraphics.html#why-ggplot2">Why <code>ggplot2</code>?</a><ul>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#what-is-the-grammar-of-graphics"><i class="fa fa-check"></i>What is the Grammar Of Graphics?</a></li>
+<li><a href="Rgraphics.html#ggplot2-vs-base-graphics"><code>ggplot2</code> VS base graphics</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#geometric-objects-aesthetics"><i class="fa fa-check"></i>Geometric objects &amp; aesthetics</a><ul>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#aesthetic-mapping"><i class="fa fa-check"></i>Aesthetic mapping</a></li>
+<li><a href="Rgraphics.html#geometric-objects-geom">Geometric objects (<code>geom</code>)</a></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#aesthetic-mapping-vs-assignment"><i class="fa fa-check"></i>Aesthetic mapping VS assignment</a></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#mapping-variables-to-other-aesthetics"><i class="fa fa-check"></i>Mapping variables to other aesthetics</a></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#exercise-0-2"><i class="fa fa-check"></i>Exercise 0</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#statistical-transformations"><i class="fa fa-check"></i>Statistical transformations</a><ul>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#why-transform-data"><i class="fa fa-check"></i>Why transform data?</a></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#setting-arguments"><i class="fa fa-check"></i>Setting arguments</a></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#changing-the-transformation"><i class="fa fa-check"></i>Changing the transformation</a></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#exercise-1-2"><i class="fa fa-check"></i>Exercise 1</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#scales"><i class="fa fa-check"></i>Scales</a><ul>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#controlling-aesthetic-mapping"><i class="fa fa-check"></i>Controlling aesthetic mapping</a></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#common-scale-arguments"><i class="fa fa-check"></i>Common scale arguments</a></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#scale-modification-examples"><i class="fa fa-check"></i>Scale modification examples</a></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#using-different-color-scales"><i class="fa fa-check"></i>Using different color scales</a></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#available-scales"><i class="fa fa-check"></i>Available scales</a></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#exercise-2-1"><i class="fa fa-check"></i>Exercise 2</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#faceting"><i class="fa fa-check"></i>Faceting</a><ul>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#what-is-faceting"><i class="fa fa-check"></i>What is faceting?</a></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#what-is-the-trend-in-housing-prices-in-each-state"><i class="fa fa-check"></i>What is the trend in housing prices in each state?</a></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#faceting-to-the-rescue"><i class="fa fa-check"></i>Faceting to the rescue</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#themes"><i class="fa fa-check"></i>Themes</a><ul>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#what-are-themes"><i class="fa fa-check"></i>What are themes?</a></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#overriding-theme-defaults"><i class="fa fa-check"></i>Overriding theme defaults</a></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#creating-saving-new-themes"><i class="fa fa-check"></i>Creating &amp; saving new themes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#saving-plots"><i class="fa fa-check"></i>Saving plots</a></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#the-1-faq"><i class="fa fa-check"></i>The #1 FAQ</a><ul>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#map-aesthetic-to-different-columns"><i class="fa fa-check"></i>Map aesthetic to different columns</a></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#exercise-3-2"><i class="fa fa-check"></i>Exercise 3</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#exercise-solutions-2"><i class="fa fa-check"></i>Exercise solutions</a><ul>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#ex-0-prototype-2"><i class="fa fa-check"></i>Ex 0: prototype</a></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#ex-1-prototype-2"><i class="fa fa-check"></i>Ex 1: prototype</a></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#ex-2-prototype-1"><i class="fa fa-check"></i>Ex 2: prototype</a></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#ex-3-prototype-2"><i class="fa fa-check"></i>Ex 3: prototype</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#wrap-up-3"><i class="fa fa-check"></i>Wrap-up</a><ul>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#feedback-3"><i class="fa fa-check"></i>Feedback</a></li>
+<li class="chapter" data-level="" data-path="Rgraphics.html"><a href="Rgraphics.html#resources-4"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html"><i class="fa fa-check"></i>R Data Wrangling</a><ul>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#setup-3"><i class="fa fa-check"></i>Setup</a><ul>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#class-structure-3"><i class="fa fa-check"></i>Class Structure</a></li>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#prerequisites-3"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#launch-an-r-session-2"><i class="fa fa-check"></i>Launch an R session</a></li>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#packages-2"><i class="fa fa-check"></i>Packages</a></li>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#workshop-outline"><i class="fa fa-check"></i>Workshop Outline</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#working-with-excel-worksheets"><i class="fa fa-check"></i>Working with Excel worksheets</a><ul>
+<li><a href="RDataWrangling.html#iterating-with-map">Iterating with <code>map()</code></a></li>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#filtering-strings-using-regex"><i class="fa fa-check"></i>Filtering strings using regex</a></li>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#writing-your-own-functions"><i class="fa fa-check"></i>Writing your own functions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#reading-excel-data-files"><i class="fa fa-check"></i>Reading Excel data files</a><ul>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#exercise-1-3"><i class="fa fa-check"></i>Exercise 1</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#data-cleanup"><i class="fa fa-check"></i>Data cleanup</a><ul>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#selecting-columns"><i class="fa fa-check"></i>Selecting columns</a></li>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#data-types-and-structures"><i class="fa fa-check"></i>Data types and structures</a></li>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#list-indexing"><i class="fa fa-check"></i>List indexing</a></li>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#dropping-missing-values"><i class="fa fa-check"></i>Dropping missing values</a></li>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#exercise-2-2"><i class="fa fa-check"></i>Exercise 2</a></li>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#reshaping-from-wide-to-long"><i class="fa fa-check"></i>Reshaping from wide to long</a></li>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#exercise-3-3"><i class="fa fa-check"></i>Exercise 3</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#data-organization-storage"><i class="fa fa-check"></i>Data organization &amp; storage</a><ul>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#a-list-of-data-frames"><i class="fa fa-check"></i>A list of data frames</a></li>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#one-big-data-frame"><i class="fa fa-check"></i>One big data frame</a></li>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#exercise-4-1"><i class="fa fa-check"></i>Exercise 4</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#exercise-solutions-3"><i class="fa fa-check"></i>Exercise solutions</a><ul>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#ex-0-prototype-3"><i class="fa fa-check"></i>Ex 0: prototype</a></li>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#ex-1-prototype-3"><i class="fa fa-check"></i>Ex 1: prototype</a></li>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#ex-2-prototype-2"><i class="fa fa-check"></i>Ex 2: prototype</a></li>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#ex-3-prototype-3"><i class="fa fa-check"></i>Ex 3: prototype</a></li>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#ex-4-prototype-1"><i class="fa fa-check"></i>Ex 4: prototype</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#complete-code"><i class="fa fa-check"></i>Complete code</a></li>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#wrap-up-4"><i class="fa fa-check"></i>Wrap-up</a><ul>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#feedback-4"><i class="fa fa-check"></i>Feedback</a></li>
+<li class="chapter" data-level="" data-path="RDataWrangling.html"><a href="RDataWrangling.html#resources-5"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III Python</b></span></li>
+<li class="chapter" data-level="" data-path="PythonInstall.html"><a href="PythonInstall.html"><i class="fa fa-check"></i>Python Installation</a><ul>
+<li class="chapter" data-level="" data-path="PythonInstall.html"><a href="PythonInstall.html#troubleshooting-session-1"><i class="fa fa-check"></i>Troubleshooting session</a></li>
+<li class="chapter" data-level="" data-path="PythonInstall.html"><a href="PythonInstall.html#software-1"><i class="fa fa-check"></i>Software</a></li>
+<li class="chapter" data-level="" data-path="PythonInstall.html"><a href="PythonInstall.html#materials-1"><i class="fa fa-check"></i>Materials</a></li>
+<li class="chapter" data-level="" data-path="PythonInstall.html"><a href="PythonInstall.html#jupyter-notebook-interfaces"><i class="fa fa-check"></i>Jupyter notebook interfaces</a><ul>
+<li class="chapter" data-level="" data-path="PythonInstall.html"><a href="PythonInstall.html#launch-jupyterlab"><i class="fa fa-check"></i>Launch JupyterLab</a></li>
+<li class="chapter" data-level="" data-path="PythonInstall.html"><a href="PythonInstall.html#launch-jupyter-notebook"><i class="fa fa-check"></i>Launch Jupyter Notebook</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="PythonInstall.html"><a href="PythonInstall.html#resources-6"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html"><i class="fa fa-check"></i>Python Introduction</a><ul>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#setup-4"><i class="fa fa-check"></i>Setup</a><ul>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#class-structure-4"><i class="fa fa-check"></i>Class Structure</a></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#prerequisites-4"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#goals-3"><i class="fa fa-check"></i>Goals</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#python-basics"><i class="fa fa-check"></i>Python basics</a><ul>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#what-is-python"><i class="fa fa-check"></i>What is Python?</a></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#why-use-python"><i class="fa fa-check"></i>Why use Python?</a></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#how-does-python-work"><i class="fa fa-check"></i>How does Python work?</a></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#interfaces-1"><i class="fa fa-check"></i>Interfaces</a></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#launch-jupyterlab-1"><i class="fa fa-check"></i>Launch JupyterLab</a></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#syntax-rules-1"><i class="fa fa-check"></i>Syntax rules</a></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#function-calls-1"><i class="fa fa-check"></i>Function calls</a></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#assignment-1"><i class="fa fa-check"></i>Assignment</a></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#reading-data-1"><i class="fa fa-check"></i>Reading data</a></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#object-methods"><i class="fa fa-check"></i>Object methods</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#using-object-methods-lists"><i class="fa fa-check"></i>Using object methods &amp; lists</a><ul>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#splitting-a-string-into-a-list-of-words"><i class="fa fa-check"></i>Splitting a string into a list of words</a></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#working-with-lists"><i class="fa fa-check"></i>Working with lists</a></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#extracting-subsets-from-lists"><i class="fa fa-check"></i>Extracting subsets from lists</a></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#using-sets-to-count-unique-items"><i class="fa fa-check"></i>Using sets to count unique items</a></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#exercise-0-3"><i class="fa fa-check"></i>Exercise 0</a></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#control-flow"><i class="fa fa-check"></i>Control flow</a></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#logical-relational-operators-1"><i class="fa fa-check"></i>Logical &amp; relational operators</a></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#counting-list-elements"><i class="fa fa-check"></i>Counting list elements</a></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#exercise-1-4"><i class="fa fa-check"></i>Exercise 1</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#iterating-over-collections-of-data"><i class="fa fa-check"></i>Iterating over collections of data</a><ul>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#iterating-over-lists-using-for-loops"><i class="fa fa-check"></i>Iterating over lists using for-loops</a></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#organizing-results-in-dictionaries"><i class="fa fa-check"></i>Organizing results in dictionaries</a></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#exercise-2-3"><i class="fa fa-check"></i>Exercise 2</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#importing-packages"><i class="fa fa-check"></i>Importing packages</a></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#exercise-solutions-4"><i class="fa fa-check"></i>Exercise solutions</a><ul>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#ex-0-prototype-4"><i class="fa fa-check"></i>Ex 0: prototype</a></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#ex-1-prototype-4"><i class="fa fa-check"></i>Ex 1: prototype</a></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#ex-2-prototype-3"><i class="fa fa-check"></i>Ex 2: prototype</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#wrap-up-5"><i class="fa fa-check"></i>Wrap-up</a><ul>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#feedback-5"><i class="fa fa-check"></i>Feedback</a></li>
+<li class="chapter" data-level="" data-path="PythonIntro.html"><a href="PythonIntro.html#resources-7"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html"><i class="fa fa-check"></i>Python Web-Scraping</a><ul>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#setup-5"><i class="fa fa-check"></i>Setup</a><ul>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#class-structure-5"><i class="fa fa-check"></i>Class Structure</a></li>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#prerequisites-5"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#goals-4"><i class="fa fa-check"></i>Goals</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#webscraping-background"><i class="fa fa-check"></i>Webscraping background</a><ul>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#what-is-web-scraping"><i class="fa fa-check"></i>What is web scraping?</a></li>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#is-web-scraping-legal-is-it-ethical"><i class="fa fa-check"></i>Is web scraping legal? Is it ethical?</a></li>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#web-scraping-approaches"><i class="fa fa-check"></i>Web scraping approaches</a></li>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#how-does-the-web-work"><i class="fa fa-check"></i>How does the web work?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#retrieve-data-in-json-format-if-you-can"><i class="fa fa-check"></i>Retrieve data in JSON format if you can</a><ul>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#examine-the-websites-structure"><i class="fa fa-check"></i>Examine the website’s structure</a></li>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#launch-jupyterlab-2"><i class="fa fa-check"></i>Launch JupyterLab</a></li>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#making-requests"><i class="fa fa-check"></i>Making requests</a></li>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#parsing-json-data"><i class="fa fa-check"></i>Parsing JSON data</a></li>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#organizing-saving-the-data"><i class="fa fa-check"></i>Organizing &amp; saving the data</a></li>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#iterating-to-retrieve-all-the-data"><i class="fa fa-check"></i>Iterating to retrieve all the data</a></li>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#exercise-0-4"><i class="fa fa-check"></i>Exercise 0</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#parsing-html-if-you-have-to"><i class="fa fa-check"></i>Parsing HTML if you have to</a><ul>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#document-object-model-dom"><i class="fa fa-check"></i>Document Object Model (DOM)</a></li>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#retrieving-html"><i class="fa fa-check"></i>Retrieving HTML</a></li>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#parsing-html-using-the-lxml-library"><i class="fa fa-check"></i>Parsing HTML using the lxml library</a></li>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#using-xpath-to-extract-content-from-html"><i class="fa fa-check"></i>Using XPath to extract content from HTML</a></li>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#iterating-to-retrieve-content-from-a-list-of-html-elements"><i class="fa fa-check"></i>Iterating to retrieve content from a list of HTML elements</a></li>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#exercise-1-5"><i class="fa fa-check"></i>Exercise 1</a></li>
+</ul></li>
+<li><a href="PythonWebScrape.html#scrapy-for-large-complex-projects"><code>Scrapy</code>: for large / complex projects</a></li>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#browser-drivers-a-last-resort"><i class="fa fa-check"></i>Browser drivers: a last resort</a></li>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#exercise-solutions-5"><i class="fa fa-check"></i>Exercise solutions</a><ul>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#ex-0-prototype-5"><i class="fa fa-check"></i>Ex 0: prototype</a></li>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#ex-1-prototype-5"><i class="fa fa-check"></i>Ex 1: prototype</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#wrap-up-6"><i class="fa fa-check"></i>Wrap-up</a><ul>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#feedback-6"><i class="fa fa-check"></i>Feedback</a></li>
+<li class="chapter" data-level="" data-path="PythonWebScrape.html"><a href="PythonWebScrape.html#resources-8"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV Stata</b></span></li>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html"><i class="fa fa-check"></i>Stata Introduction</a><ul>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#setup-6"><i class="fa fa-check"></i>Setup</a><ul>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#software-materials"><i class="fa fa-check"></i>Software &amp; Materials</a></li>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#organization"><i class="fa fa-check"></i>Organization</a></li>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#goals-5"><i class="fa fa-check"></i>Goals</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#why-stata"><i class="fa fa-check"></i>Why stata?</a><ul>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#stata-interface"><i class="fa fa-check"></i>Stata interface</a></li>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#do-files"><i class="fa fa-check"></i>Do-files</a></li>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#stata-help"><i class="fa fa-check"></i>Stata help</a></li>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#syntax-rules-2"><i class="fa fa-check"></i>Syntax rules</a></li>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#lets-get-started"><i class="fa fa-check"></i>Let’s get started</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#reading-data-2"><i class="fa fa-check"></i>Reading data</a><ul>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#data-file-commands"><i class="fa fa-check"></i>Data file commands</a></li>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#a-note-about-path-names"><i class="fa fa-check"></i>A note about path names</a></li>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#wheres-my-data"><i class="fa fa-check"></i>Where’s my data?</a></li>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#reading-non-stata-data"><i class="fa fa-check"></i>Reading non-Stata data</a></li>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#exercise-0-5"><i class="fa fa-check"></i>Exercise 0</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#statistics-graphs"><i class="fa fa-check"></i>Statistics &amp; graphs</a><ul>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#frequently-used-commands"><i class="fa fa-check"></i>Frequently used commands</a></li>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#basic-graphing-commands"><i class="fa fa-check"></i>Basic graphing commands</a></li>
+<li><a href="StataIntro.html#the-by-command">The <code>by</code> command</a></li>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#exercise-1-6"><i class="fa fa-check"></i>Exercise 1</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#basic-data-management"><i class="fa fa-check"></i>Basic data management</a><ul>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#labels"><i class="fa fa-check"></i>Labels</a></li>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#variable-value-labels"><i class="fa fa-check"></i>Variable &amp; value labels</a></li>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#exercise-2-4"><i class="fa fa-check"></i>Exercise 2</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#working-on-subsets"><i class="fa fa-check"></i>Working on subsets</a></li>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#generating-replacing-variables"><i class="fa fa-check"></i>Generating &amp; replacing variables</a><ul>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#exercise-3-4"><i class="fa fa-check"></i>Exercise 3</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#exercise-solutions-6"><i class="fa fa-check"></i>Exercise solutions</a><ul>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#ex-0-prototype-6"><i class="fa fa-check"></i>Ex 0: prototype</a></li>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#ex-1-prototype-6"><i class="fa fa-check"></i>Ex 1: prototype</a></li>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#ex-2-prototype-4"><i class="fa fa-check"></i>Ex 2: prototype</a></li>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#ex-3-prototype-4"><i class="fa fa-check"></i>Ex 3: prototype</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#wrap-up-7"><i class="fa fa-check"></i>Wrap-up</a><ul>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#feedback-7"><i class="fa fa-check"></i>Feedback</a></li>
+<li class="chapter" data-level="" data-path="StataIntro.html"><a href="StataIntro.html#resources-9"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html"><i class="fa fa-check"></i>Stata Data Management</a><ul>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#setup-7"><i class="fa fa-check"></i>Setup</a><ul>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#software-materials-1"><i class="fa fa-check"></i>Software &amp; Materials</a></li>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#organization-1"><i class="fa fa-check"></i>Organization</a></li>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#goals-6"><i class="fa fa-check"></i>Goals</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#opening-files"><i class="fa fa-check"></i>Opening Files</a></li>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#generating-replacing-variables-1"><i class="fa fa-check"></i>Generating &amp; replacing variables</a><ul>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#data-manipulation-commands"><i class="fa fa-check"></i>Data Manipulation Commands</a></li>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#generate-replace"><i class="fa fa-check"></i>Generate &amp; Replace</a></li>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#recode"><i class="fa fa-check"></i>Recode</a></li>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#egen"><i class="fa fa-check"></i>egen</a></li>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#exercise-0-6"><i class="fa fa-check"></i>Exercise 0</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#by-processing"><i class="fa fa-check"></i>By processing</a><ul>
+<li><a href="StataDatMan.html#the-bysort-command">The <code>bysort</code> Command</a></li>
+<li><a href="StataDatMan.html#by-prefix-vs.-by-options"><code>by</code> prefix vs. <code>by</code> options</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#missing-values"><i class="fa fa-check"></i>Missing values</a><ul>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#bulk-conversion-to-missing-values"><i class="fa fa-check"></i>Bulk Conversion to Missing Values</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#variable-types"><i class="fa fa-check"></i>Variable types</a><ul>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#converting-to-from-strings"><i class="fa fa-check"></i>Converting to &amp; from Strings</a></li>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#converting-strings-to-datetime"><i class="fa fa-check"></i>Converting Strings to Date/Time</a></li>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#formatting-numbers-as-dates"><i class="fa fa-check"></i>Formatting Numbers as Dates</a></li>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#exercise-1-7"><i class="fa fa-check"></i>Exercise 1</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#merging-appending-joining"><i class="fa fa-check"></i>Merging, appending, &amp; joining</a><ul>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#appending-datasets"><i class="fa fa-check"></i>Appending Datasets</a></li>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#merging-datasets"><i class="fa fa-check"></i>Merging Datasets</a></li>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#merge-options"><i class="fa fa-check"></i>Merge Options</a></li>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#many-to-many-merges"><i class="fa fa-check"></i>Many-to-many merges</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#creating-summarized-data-sets"><i class="fa fa-check"></i>Creating summarized data sets</a><ul>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#collapse"><i class="fa fa-check"></i>Collapse</a></li>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#exercise-2-5"><i class="fa fa-check"></i>Exercise 2</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#exercise-solutions-7"><i class="fa fa-check"></i>Exercise Solutions</a><ul>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#ex-0-prototype-7"><i class="fa fa-check"></i>Ex 0: prototype</a></li>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#ex-1-prototype-7"><i class="fa fa-check"></i>Ex 1: prototype</a></li>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#ex-2-prototype-5"><i class="fa fa-check"></i>Ex 2: prototype</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#wrap-up-8"><i class="fa fa-check"></i>Wrap-up</a><ul>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#feedback-8"><i class="fa fa-check"></i>Feedback</a></li>
+<li class="chapter" data-level="" data-path="StataDatMan.html"><a href="StataDatMan.html#resources-10"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html"><i class="fa fa-check"></i>Stata Modeling &amp; Graphing</a><ul>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#setup-8"><i class="fa fa-check"></i>Setup</a><ul>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#software-materials-2"><i class="fa fa-check"></i>Software &amp; Materials</a></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#organization-2"><i class="fa fa-check"></i>Organization</a></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#goals-7"><i class="fa fa-check"></i>Goals</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#fitting-models"><i class="fa fa-check"></i>Fitting models</a><ul>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#todays-dataset"><i class="fa fa-check"></i>Today’s Dataset</a></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#opening-files-1"><i class="fa fa-check"></i>Opening Files</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#simple-regression"><i class="fa fa-check"></i>Simple regression</a><ul>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#steps-for-running-regression"><i class="fa fa-check"></i>Steps for running regression</a></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#preliminaries"><i class="fa fa-check"></i>Preliminaries</a></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#sat-scores-education-expenditures"><i class="fa fa-check"></i>SAT scores &amp; Education Expenditures</a></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#ols-assumptions"><i class="fa fa-check"></i>OLS assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#multiple-regression"><i class="fa fa-check"></i>Multiple Regression</a><ul>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#preliminaries-1"><i class="fa fa-check"></i>Preliminaries</a></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#exercise-0-7"><i class="fa fa-check"></i>Exercise 0</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#interactions"><i class="fa fa-check"></i>Interactions</a><ul>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#categorical-predictors"><i class="fa fa-check"></i>Categorical Predictors</a></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#exercise-1-8"><i class="fa fa-check"></i>Exercise 1</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#exporting-saving-results"><i class="fa fa-check"></i>Exporting &amp; saving results</a><ul>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#regression-tables"><i class="fa fa-check"></i>Regression tables</a></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#saving-replaying"><i class="fa fa-check"></i>Saving &amp; replaying</a></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#exporting-to-excel"><i class="fa fa-check"></i>Exporting to Excel</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#graphing-in-stata"><i class="fa fa-check"></i>Graphing in Stata</a><ul>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#graphing-strategies"><i class="fa fa-check"></i>Graphing Strategies</a></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#terrible-graph"><i class="fa fa-check"></i>Terrible Graph</a></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#much-better-graph"><i class="fa fa-check"></i>Much Better Graph</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#univariate-graphics"><i class="fa fa-check"></i>Univariate Graphics</a><ul>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#our-first-dataset"><i class="fa fa-check"></i>Our First Dataset</a></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#single-continuous-variables"><i class="fa fa-check"></i>Single Continuous Variables</a></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#single-categorical-variables"><i class="fa fa-check"></i>Single Categorical Variables</a></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#exercise-2-6"><i class="fa fa-check"></i>Exercise 2</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#bivariate-graphics"><i class="fa fa-check"></i>Bivariate Graphics</a><ul>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#next-dataset"><i class="fa fa-check"></i>Next Dataset:</a></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#the-twoway-family"><i class="fa fa-check"></i>The Twoway Family</a></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#overlaying-twoway-graphs"><i class="fa fa-check"></i>Overlaying Twoway Graphs</a></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#exercise-3-5"><i class="fa fa-check"></i>Exercise 3</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#twoway-line-graphs"><i class="fa fa-check"></i>Twoway Line Graphs</a></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#exporting-graphs"><i class="fa fa-check"></i>Exporting Graphs</a></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#exercise-solutions-8"><i class="fa fa-check"></i>Exercise Solutions</a><ul>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#ex-0-prototype-8"><i class="fa fa-check"></i>Ex 0: prototype</a></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#ex-1-prototype-8"><i class="fa fa-check"></i>Ex 1: prototype</a></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#ex-2-prototype-6"><i class="fa fa-check"></i>Ex 2: prototype</a></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#ex-3-prototype-5"><i class="fa fa-check"></i>Ex 3: prototype</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#wrap-up-9"><i class="fa fa-check"></i>Wrap-up</a><ul>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#feedback-9"><i class="fa fa-check"></i>Feedback</a></li>
+<li class="chapter" data-level="" data-path="StataModGraph.html"><a href="StataModGraph.html#resources-11"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Science Workshops</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="r-introduction" class="section level1">
+<h1>R Introduction</h1>
+<p><strong>Topics</strong></p>
+<ul>
+<li>Functions</li>
+<li>Objects</li>
+<li>Assignment</li>
+<li>Finding help</li>
+<li>Importing packages</li>
+<li>Basic data manipulation</li>
+<li>Operations within groups of data</li>
+<li>Saving data</li>
+</ul>
+<div id="setup" class="section level2">
+<h2>Setup</h2>
+<div id="class-structure" class="section level3">
+<h3>Class Structure</h3>
+<ul>
+<li>Informal — Ask questions at any time. Really!</li>
+<li>Collaboration is encouraged - please spend a minute introducing yourself to your neighbors!</li>
+</ul>
+</div>
+<div id="prerequisites" class="section level3">
+<h3>Prerequisites</h3>
+<p>This is an introductory R course:</p>
+<ul>
+<li>Assumes no prior knowledge of <strong>how to use</strong> R</li>
+<li>We do assume you know <strong>why</strong> you want to learn R. If you don’t, and want a comparison of R to other statistical software, see our <a href="./DataScienceTools.html">Data Science Tools</a> workshop</li>
+<li>Relatively slow-paced</li>
+</ul>
+</div>
+<div id="goals" class="section level3">
+<h3>Goals</h3>
+<p>We will learn about the R language by analyzing a dataset of baby names. In particular, our goals are to learn about:</p>
+<ol style="list-style-type: decimal">
+<li>What R is and how it works</li>
+<li>How we can interact with R</li>
+<li>Foundations of the language (functions, objects, assignment)</li>
+<li>The <code>tidyverse</code> package ecosystem for data science</li>
+<li>Basic data manipulation useful for cleaning datasets</li>
+<li>Working with grouped data</li>
+<li>Aggregating data to create summaries</li>
+<li>Saving objects, data, and scripts</li>
+</ol>
+<p>This workshop will not cover how to iterate over collections of data, create your own functions, produce publication quality graphics, or fit models to data. These topics are covered in our <a href="./RDataWrangling.html">R Data Wrangling</a>, <a href="./Rgraphics.html">R Graphics</a>, and <a href="./Rmodels.html">R Regression Models</a> workshops.</p>
+</div>
+</div>
+<div id="r-basics" class="section level2">
+<h2>R basics</h2>
+<div class="alert alert-info">
+<p><strong>GOAL: To learn about the foundations of the R language.</strong> In particular:</p>
+<ol style="list-style-type: decimal">
+<li>What R is and how it works</li>
+<li>R interfaces</li>
+<li>Functions</li>
+<li>Objects</li>
+<li>Assignment</li>
+<li>Getting help</li>
+<li><code>tidyverse</code> package ecosystem for data science</li>
+</ol>
+</div>
+<div id="what-is-r" class="section level3">
+<h3>What is R?</h3>
+<ul>
+<li>R is a free language and environment for statistical computing and graphics</li>
+<li>R is an interpreted language, not a compiled one, meaning that all commands typed on the keyboard are directly executed without requiring to build a complete program (this is like Python and unlike C, Fortran, Pascal, etc.)</li>
+<li>R has existed for over 25 years</li>
+<li>R is modular — most functionality is from add-on packages. So the language can be thought of as a <em>platform</em> for creating and running a large number of useful packages.</li>
+</ul>
+</div>
+<div id="why-use-r" class="section level3">
+<h3>Why use R?</h3>
+<ul>
+<li>The most popular software for data analysis</li>
+<li>Extremely flexible: can be used to manipulate, analyze, and visualize any kind of data</li>
+<li>Cutting edge statistical tools</li>
+<li>Publication quality graphics</li>
+<li>15,000+ add on packages covering all aspects of statistics and machine learning</li>
+<li>Active community of users</li>
+</ul>
+</div>
+<div id="how-does-r-work" class="section level3">
+<h3>How does R work?</h3>
+<p>While graphical-based statistical software (e.g., SPSS, GraphPad) immediately display the results of an analysis, <strong>R stores results in an <code>object</code> (a data structure)</strong>, so that an analysis can be done with no result displayed. Such a feature is very useful, since a user can extract only that part of the results that is of interest and can pass results into further analyses.</p>
+<p>For example, if you run a series of 20 regressions and want to compare the different regression coefficients, R can display only the estimated coefficients: thus the results may take a single line, whereas graphical-based software could open 20 results windows. In addition, these regression coefficients can be passed directly into further analyses — such as generating predictions.</p>
+<div class="figure">
+<img src="R/Rintro/images/R_chain.png" />
+
+</div>
+<p>When R is running, variables, data, functions, results, etc., are <strong>stored in memory</strong> on the computer in the form of <code>objects</code> that have a name. The user can <strong>perform actions</strong> on these objects with <code>operators</code> (arithmetic, logical, comparison, etc.) and <code>functions</code> (which are themselves objects). Here’s a schematic of how this all fits together:</p>
+<div class="figure">
+<img src="R/Rintro/images/R_works.png" />
+
+</div>
+</div>
+<div id="interfaces" class="section level3">
+<h3>Interfaces</h3>
+<div id="text-editors-ides-notebooks" class="section level4">
+<h4>Text editors, IDEs, &amp; Notebooks</h4>
+<p>There are different ways of interacting with R. The two main ways are through:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>text editors</strong> or <strong>Integrated Development Environments (IDEs):</strong> Text editors and IDEs are not really separate categories; as you add features to a text editor it becomes more like an IDE. Some editors/IDEs are language-specific while others are general purpose — typically providing language support via plugins. For these workshops we will use <a href="https://rstudio.com/">RStudio</a>; it is a good R-specific IDE with many useful features. Here are a few popular editors/IDEs that can be used with R:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Editor / IDE</th>
+<th align="left">Features</th>
+<th align="left">Ease of use</th>
+<th align="left">Language support</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">RStudio</td>
+<td align="left">Excellent</td>
+<td align="left">Easy</td>
+<td align="left">R only</td>
+</tr>
+<tr class="even">
+<td align="left">Jupyter Lab</td>
+<td align="left">Good</td>
+<td align="left">Easy</td>
+<td align="left">Excellent</td>
+</tr>
+<tr class="odd">
+<td align="left">VS code</td>
+<td align="left">Excellent</td>
+<td align="left">Easy</td>
+<td align="left">Very good</td>
+</tr>
+<tr class="even">
+<td align="left">Atom</td>
+<td align="left">Good</td>
+<td align="left">Moderate</td>
+<td align="left">Good</td>
+</tr>
+<tr class="odd">
+<td align="left">Vim</td>
+<td align="left">Excellent</td>
+<td align="left">Hard</td>
+<td align="left">Good</td>
+</tr>
+<tr class="even">
+<td align="left">Emacs</td>
+<td align="left">Excellent</td>
+<td align="left">Hard</td>
+<td align="left">Excellent</td>
+</tr>
+</tbody>
+</table></li>
+<li><p><strong>Notebooks:</strong> Web-based applications that allow you to create and share documents that contain live code, equations, visualizations, and narrative text. A popular notebook is the open source <a href="https://jupyter.org/">Jupyter Notebook</a> that has support for 40+ languages.</p></li>
+</ol>
+</div>
+<div id="source-code-literate-programming" class="section level4">
+<h4>Source code &amp; literate programming</h4>
+<p>There are also several different <strong>formats</strong> available for writing code in R. These basically boil down to a choice between:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Source code:</strong> the practice of writing code, and possibly comments, in a plain text document. In R this is done by writing code in a text file with a <code>.R</code> or <code>.r</code> extension. Writing source code has the great advantage of being simple. Souce code is the format of choice if you intend to run your code as a complete script - for example, from the command line.</p></li>
+<li><p><strong>Literate programming:</strong> the practice of embedding computer code in a natural language document. In R this is often done using <a href="https://rmarkdown.rstudio.com/"><strong>Rmarkdown</strong></a>, which involves embeddeding R code in a document that is authored using <em>Markdown</em> and which has a <code>.Rmd</code> extension. <em>Markdown</em> is easy to write and designed to be human-readable. Markdown is the format of choice if you intend to run your code interactively, by running small pieces of code and looking at each output. Many researchers use Markdown to write their journal papers, dissertations, and statistics/math class notes, since it is easy to convert into other formats later, such as HTML (for a webpage), MS Word, or PDF (via LaTeX).</p></li>
+</ol>
+<p>Here are some resources for learning more about Rmarkdown and RStudio:</p>
+<ul>
+<li><a href="https://rmarkdown.rstudio.com/authoring_quick_tour.html" class="uri">https://rmarkdown.rstudio.com/authoring_quick_tour.html</a></li>
+<li><a href="https://cran.r-project.org/web/packages/rmarkdown/vignettes/rmarkdown.html" class="uri">https://cran.r-project.org/web/packages/rmarkdown/vignettes/rmarkdown.html</a></li>
+<li><a href="https://rstudio.com/wp-content/uploads/2019/01/Cheatsheets_2019.pdf" class="uri">https://rstudio.com/wp-content/uploads/2019/01/Cheatsheets_2019.pdf</a></li>
+</ul>
+</div>
+</div>
+<div id="launch-a-session" class="section level3">
+<h3>Launch a session</h3>
+<p>Start RStudio and create a new project:</p>
+<ul>
+<li>On Windows click the start button and search for RStudio. On Mac RStudio will be in your applications folder.</li>
+<li>In Rstudio go to <code>File -&gt; New Project</code>.</li>
+<li>Choose <code>Existing Directory</code> and browse to the workshop materials directory on your desktop.</li>
+<li>Choose <code>File -&gt; Open File</code> and select the file with the word “BLANK” in the name.</li>
+</ul>
+</div>
+<div id="exercise-0" class="section level3">
+<h3>Exercise 0</h3>
+<p>The purpose of this exercise is to give you an opportunity to explore the interface provided by RStudio. You may not know how to do these things; that’s fine! This is an opportunity to figure it out.</p>
+<p>Also keep in mind that we are living in a golden age of tab completion. If you don’t know the name of an R function, try guessing the first two or three letters and pressing TAB. If you guessed correctly the function you are looking for should appear in a pop up!</p>
+<ol style="list-style-type: decimal">
+<li><p>Try to get R to add 2 plus 2.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">##</code></pre></div></li>
+<li><p>Try to calculate the square root of 10.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">##</code></pre></div></li>
+<li><p>R includes extensive documentation, including a manual named “An introduction to R”. Use the RStudio help pane. to locate this manual.</p></li>
+</ol>
+</div>
+<div id="syntax-rules" class="section level3">
+<h3>Syntax rules</h3>
+<ul>
+<li>R is case sensitive</li>
+<li>R ignores white space</li>
+<li>Variable names should start with a letter (A-Z and a-z) and can include letters, digits (0-9), dots (.), and underscores (_)</li>
+<li>Comments can be inserted using a hash <code>#</code> symbol</li>
+<li>Functions must be written with parentheses, even if there is nothing within them; for example: <code>ls()</code></li>
+</ul>
+</div>
+<div id="function-calls" class="section level3">
+<h3>Function calls</h3>
+<p><strong>Functions perform actions</strong> — they take some input, called <code>arguments</code> and return some output (i.e., a result). Here’s a schematic of how a function works:</p>
+<div class="figure">
+<img src="R/Rintro/images/function.png" />
+
+</div>
+<p>The general form for calling R functions is</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## FunctionName(arg.1 = value.1, arg.2 = value.2, ..., arg.n = value.n)</code></pre></div>
+<p>The arguments in a function can be objects (data, formulae, expressions, etc.), some of which could be defined by default in the function; these default values may be modified by the user by specifying options.</p>
+<p>Arguments can be <strong>matched by name</strong>; unnamed arguments will be <strong>matched by position</strong>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">values &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.45</span>, <span class="fl">2.34</span>, <span class="fl">5.68</span>)
+<span class="kw">round</span>(<span class="dt">x =</span> values, <span class="dt">digits =</span> <span class="dv">1</span>) <span class="co"># match by name</span></code></pre></div>
+<pre><code>## [1] 1.4 2.3 5.7</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(values, <span class="dv">1</span>) <span class="co"># match by position</span></code></pre></div>
+<pre><code>## [1] 1.4 2.3 5.7</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="dv">1</span>, values) <span class="co"># be careful when matching by position!</span></code></pre></div>
+<pre><code>## [1] 1 1 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="dt">digits =</span> <span class="dv">1</span>, <span class="dt">x =</span> values) <span class="co"># matching by name is safer!</span></code></pre></div>
+<pre><code>## [1] 1.4 2.3 5.7</code></pre>
+</div>
+<div id="assignment" class="section level3">
+<h3>Assignment</h3>
+<p>Values can be assigned names and used in subsequent operations</p>
+<ul>
+<li>The <strong>gets</strong> <code>&lt;-</code> operator (less than followed by a dash) is used to save values</li>
+<li>The name on the left <strong>gets</strong> the value on the right.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sqrt</span>(<span class="dv">10</span>) ## calculate square root of 10; result is not stored anywhere</code></pre></div>
+<pre><code>## [1] 3.16228</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">10</span>) <span class="co"># assign result to a variable named x</span></code></pre></div>
+<p>Names should start with a letter, and contain only letters, numbers, underscores, and periods.</p>
+</div>
+<div id="asking-for-help" class="section level3">
+<h3>Asking for help</h3>
+<ol style="list-style-type: decimal">
+<li><p>You can ask R for help using the <code>help</code> function, or the <code>?</code> shortcut.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help</span>(help)
+?help
+?sqrt</code></pre></div>
+<p>The <code>help</code> function can be used to look up the documentation for a function, or to look up the documentation to a package. We can learn how to use the <code>stats</code> package by reading its documentation like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help</span>(<span class="dt">package =</span> <span class="st">&quot;stats&quot;</span>)</code></pre></div></li>
+<li><p>If you know the name of the package you want to use, then Googling “R <em>package-name</em>” will often get you to the documentation. Packages are hosted on several different repositories, including:</p>
+<ul>
+<li>CRAN: <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html" class="uri">https://cran.r-project.org/web/packages/available_packages_by_name.html</a></li>
+<li>Bioconductor: <a href="https://www.bioconductor.org/packages/release/bioc/" class="uri">https://www.bioconductor.org/packages/release/bioc/</a></li>
+<li>Github: <a href="http://rpkg.gepuro.net/" class="uri">http://rpkg.gepuro.net/</a></li>
+<li>R-Forge: <a href="https://r-forge.r-project.org/R/?group_id=1326" class="uri">https://r-forge.r-project.org/R/?group_id=1326</a></li>
+</ul></li>
+<li><p>If you know the type of analysis you want to perform, you can Google “CRAN Task Views”, where there are curated lists of packages <a href="https://cran.r-project.org/web/views/" class="uri">https://cran.r-project.org/web/views/</a>. If you want to know which packages are popular, you can look at <a href="https://r-pkg.org" class="uri">https://r-pkg.org</a>.</p></li>
+</ol>
+</div>
+<div id="reading-data" class="section level3">
+<h3>Reading data</h3>
+<p>R has data reading functionality built-in – see e.g., <code>help(read.table)</code>. However, faster and more robust tools are available, and so to make things easier on ourselves we will use a <em>contributed package</em> instead. This requires that we learn a little bit about packages in R.</p>
+</div>
+<div id="installing-using-packages" class="section level3">
+<h3>Installing &amp; using packages</h3>
+<p>R is a modular environment that is extended by the use of <strong>packages</strong>. Packages are collections of functions or commands that are designed to perform specific tasks (e.g., fit a type of regression model). A large number of contributed packages are available (&gt; 15,000).</p>
+<p>Using an R package is a <strong>two step process</strong>:</p>
+<ol style="list-style-type: decimal">
+<li><p>Install the package onto your computer using the <code>install.packages()</code> function. This only needs to be done the <strong>first time</strong> you use the package.</p></li>
+<li><p>Load the package into your R session’s search path using the <code>library()</code> function. This needs to be done <strong>each time</strong> you use the package.</p></li>
+</ol>
+</div>
+<div id="the-tidyverse" class="section level3">
+<h3>The <code>tidyverse</code></h3>
+<p>While R’s built-in packages are powerful, in recent years there has been a big surge in well-designed <em>contributed packages</em> for R. In particular, a collection of R packages called <a href="https://www.tidyverse.org/"><code>tidyverse</code></a> have been designed specifically for data science. All packages included in <code>tidyverse</code> share an underlying design philosophy, grammar, and data structures. This philosopy is rooted in the idea of “tidy data”:</p>
+<div class="figure">
+<img src="R/Rintro/images/tidy_data.png" />
+
+</div>
+<p>A typical workflow for using <code>tidyverse</code> packages looks like this:</p>
+<div class="figure">
+<img src="R/Rintro/images/tidy_workflow.png" />
+
+</div>
+<p>You should have already installed the <code>tidyverse</code> and <code>rmarkdown</code> packages onto your computer before the workshop — see <a href="./Rinstall.html">R Installation</a>. Now let’s load these packages into the search path of our R session.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+<span class="kw">library</span>(rmarkdown)</code></pre></div>
+</div>
+<div id="readers-for-common-file-types" class="section level3">
+<h3>Readers for common file types</h3>
+<p>To read data from a file, you have to know what kind of file it is. The table below lists functions from the <code>readr</code> package, which is part of <code>tidyverse</code>, that can import data from common plain-text formats.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Data Type</th>
+<th align="left">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">comma separated</td>
+<td align="left"><code>read_csv()</code></td>
+</tr>
+<tr class="even">
+<td align="left">tab separated</td>
+<td align="left"><code>read_delim()</code></td>
+</tr>
+<tr class="odd">
+<td align="left">other delimited formats</td>
+<td align="left"><code>read_table()</code></td>
+</tr>
+<tr class="even">
+<td align="left">fixed width</td>
+<td align="left"><code>read_fwf()</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note</strong> You may be confused by the existence of similar functions, e.g., <code>read.csv</code> and <code>read.delim</code>. These are legacy functions that tend to be slower and less robust than the <code>readr</code> functions. One way to tell them apart is that the faster more robust versions use underscores in their names (e.g., <code>read_csv</code>) while the older functions use dots (e.g., <code>read.csv</code>). My advice is to use the more robust newer versions, i.e., the ones with underscores.</p>
+</div>
+<div id="baby-names-data" class="section level3">
+<h3>Baby names data</h3>
+<p>As an example project we will analyze the popularity of baby names in the US from 1960 through 2017. The data were retrieved from <a href="https://catalog.data.gov/dataset/baby-names-from-social-security-card-applications-national-level-data" class="uri">https://catalog.data.gov/dataset/baby-names-from-social-security-card-applications-national-level-data</a>.</p>
+<p>Here are the questions we will use R to answer:</p>
+<ol style="list-style-type: decimal">
+<li>In which year did your name (or another name) occur most frequently by <strong>count</strong>?</li>
+<li>Which names have the highest popularity by <strong>proportion</strong> for each sex and year?</li>
+<li>How does the percentage of babies given one of the top 10 names of the year change over time?</li>
+</ol>
+</div>
+<div id="exercise-1" class="section level3">
+<h3>Exercise 1</h3>
+<p><strong>Reading the baby names data</strong></p>
+<p>Make sure you have installed the <code>tidyverse</code> suite of packages and attached them with <code>library(tidyverse)</code>.</p>
+<ol style="list-style-type: decimal">
+<li><p>Open the <code>read_csv()</code> help page to determine how to use it to read in data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">##</code></pre></div></li>
+<li><p>Read the baby names data using the <code>read_csv()</code> function and assign the result with the name <code>baby_names</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">##</code></pre></div></li>
+<li><p>BONUS (optional): Save the <code>baby_names</code> data as a Stata data set <code>babynames.dta</code> and as an R data set <code>babynames.rds</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">##</code></pre></div></li>
+</ol>
+</div>
+</div>
+<div id="manipulating-data" class="section level2">
+<h2>Manipulating data</h2>
+<div class="alert alert-info">
+<p><strong>GOAL: To learn about basic data manipulation used to clean datasets.</strong> In particular:</p>
+<ol style="list-style-type: decimal">
+<li>Filtering data by choosing rows — using the <code>filter()</code> function</li>
+<li>Selecting data by choosing columns — using the <code>select()</code> function</li>
+<li>Arranging data by reordering rows — using the <code>arrange()</code> function</li>
+<li>Using the pipe <code>%&gt;%</code> operator to simplify sequential operations</li>
+</ol>
+</div>
+<p>In this section we will pull out specific names from the baby names data and examine changes in their popularity over time.</p>
+<p>The <code>baby_names</code> object we created in the last exercise is a <code>data.frame</code>. There are many other data structures in R, but for now we’ll focus on working with <code>data.frames</code>. Think of a <code>data.frame</code> as a spreadsheet. If you want to know more about R data structures, you can see a summary in our <a href="./RDataWrangling.html#data-types-and-structures">R Data Wrangling</a> workshop.</p>
+<p>R has decent data manipulation tools built-in – see e.g., <code>help(Extract)</code>. But, <code>tidyverse</code> packages often provide more intuitive syntax for accomplishing the same task. In particular, we will use the <code>dplyr</code> package from <code>tidyverse</code> to filter, select, and arrange data, as well as create new variables.</p>
+<div class="figure">
+<img src="R/Rintro/images/dplyr.png" />
+
+</div>
+<div id="filter-select-arrange" class="section level3">
+<h3>Filter, select, &amp; arrange</h3>
+<p>One way to find the year in which your name was the most popular is to filter out just the rows corresponding to your name, and then arrange (sort) by Count.</p>
+<p>To demonstrate these techniques we’ll try to determine whether “Alex”&quot; or “Mark” was more popular in 1992. We start by filtering the data so that we keep only rows where Year is equal to <code>1992</code> and Name is either “Alex” or “Mark”.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Read in the baby names data if you haven&#39;t already
+baby_names &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;babyNames.csv&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">baby_names_alexmark &lt;-<span class="st"> </span><span class="kw">filter</span>(baby_names, 
+             Year <span class="op">==</span><span class="st"> </span><span class="dv">1992</span> <span class="op">&amp;</span><span class="st"> </span>(Name <span class="op">==</span><span class="st"> &quot;Alex&quot;</span> <span class="op">|</span><span class="st"> </span>Name <span class="op">==</span><span class="st"> &quot;Mark&quot;</span>))
+
+<span class="kw">print</span>(baby_names_alexmark) <span class="co"># explicit printing</span></code></pre></div>
+<pre><code>## # A tibble: 4 x 4
+##   Name  Sex   Count  Year
+##   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 Alex  Girls   366  1992
+## 2 Mark  Girls    20  1992
+## 3 Mark  Boys   8743  1992
+## 4 Alex  Boys   7348  1992</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">baby_names_alexmark <span class="co"># implicit printing</span></code></pre></div>
+<pre><code>## # A tibble: 4 x 4
+##   Name  Sex   Count  Year
+##   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 Alex  Girls   366  1992
+## 2 Mark  Girls    20  1992
+## 3 Mark  Boys   8743  1992
+## 4 Alex  Boys   7348  1992</code></pre>
+<p>Notice that we can combine conditions using <code>&amp;</code> (AND) and <code>|</code> (OR).</p>
+<p>In this case it’s pretty easy to see that “Mark” is more popular, but to make it even easier we can arrange the data so that the most popular name is listed first.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">arrange</span>(baby_names_alexmark, Count)</code></pre></div>
+<pre><code>## # A tibble: 4 x 4
+##   Name  Sex   Count  Year
+##   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 Mark  Girls    20  1992
+## 2 Alex  Girls   366  1992
+## 3 Alex  Boys   7348  1992
+## 4 Mark  Boys   8743  1992</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">arrange</span>(baby_names_alexmark, <span class="kw">desc</span>(Count))</code></pre></div>
+<pre><code>## # A tibble: 4 x 4
+##   Name  Sex   Count  Year
+##   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 Mark  Boys   8743  1992
+## 2 Alex  Boys   7348  1992
+## 3 Alex  Girls   366  1992
+## 4 Mark  Girls    20  1992</code></pre>
+<p>We can also use the <code>select()</code> function to subset the <code>data.frame</code> by columns. We can then assign the output to a new object. If we would just like to glance at the first few lines we can use the <code>head()</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">baby_names_subset &lt;-<span class="st"> </span><span class="kw">select</span>(baby_names, Name, Count)
+
+<span class="kw">head</span>(baby_names_subset)</code></pre></div>
+<pre><code>## # A tibble: 6 x 2
+##   Name  Count
+##   &lt;chr&gt; &lt;dbl&gt;
+## 1 Mary  51474
+## 2 Susan 39200
+## 3 Linda 37314
+## 4 Karen 36376
+## 5 Donna 34133
+## 6 Lisa  33702</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(baby_names_subset, <span class="dt">n =</span> <span class="dv">6</span>) <span class="co"># default is n = 6</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 2
+##   Name  Count
+##   &lt;chr&gt; &lt;dbl&gt;
+## 1 Mary  51474
+## 2 Susan 39200
+## 3 Linda 37314
+## 4 Karen 36376
+## 5 Donna 34133
+## 6 Lisa  33702</code></pre>
+</div>
+<div id="logical-relational-operators" class="section level3">
+<h3>Logical &amp; relational operators</h3>
+<p>In a previous example we used <code>==</code> to filter rows. Here’s a table of other commonly used relational operators:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Operator</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>==</code></td>
+<td align="left">equal to</td>
+</tr>
+<tr class="even">
+<td align="left"><code>!=</code></td>
+<td align="left">not equal to</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>&gt;</code></td>
+<td align="left">greater than</td>
+</tr>
+<tr class="even">
+<td align="left"><code>&gt;=</code></td>
+<td align="left">greater than or equal to</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>&lt;</code></td>
+<td align="left">less than</td>
+</tr>
+<tr class="even">
+<td align="left"><code>&lt;=</code></td>
+<td align="left">less than or equal to</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>%in%</code></td>
+<td align="left">contained in</td>
+</tr>
+</tbody>
+</table>
+<p>These relational operators may be combined with logical operators, such as <code>&amp;</code> (and) or <code>|</code> (or). For example, we can create a <strong>vector</strong> (a <strong>container for a collection of values</strong>) and demonstrate some ways to combine operators:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span> <span class="co"># a vector</span>
+x</code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x <span class="op">&gt;</span><span class="st"> </span><span class="dv">7</span> <span class="co"># a simple condition</span></code></pre></div>
+<pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x <span class="op">&gt;</span><span class="st"> </span><span class="dv">7</span> <span class="op">|</span><span class="st"> </span>x <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span> <span class="co"># two conditions combined</span></code></pre></div>
+<pre><code>##  [1]  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE</code></pre>
+<p>If we want to match multiple elements from two vectors we can use the <code>%in%</code> operator:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># x %in% vector</span>
+<span class="co"># elements of x matched in vector</span>
+x <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>) </code></pre></div>
+<pre><code>##  [1]  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE</code></pre>
+<p>Notice that logical and relational operators return <strong>logical vectors</strong> of <code>TRUE</code> and <code>FALSE</code> values. The logical vectors returned by these operators can themselves be operated on by functions:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x <span class="op">&gt;</span><span class="st"> </span><span class="dv">7</span></code></pre></div>
+<pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(x <span class="op">&gt;</span><span class="st"> </span><span class="dv">7</span>)</code></pre></div>
+<pre><code>## [1] 3</code></pre>
+</div>
+<div id="exercise-2.1" class="section level3">
+<h3>Exercise 2.1</h3>
+<p><strong>Peak popularity of your name</strong></p>
+<p>In this exercise you will discover the year your name reached its maximum popularity.</p>
+<p>Read in the “babyNames.csv” file if you have not already done so, assigning the result to <code>baby_names</code>. Make sure you have installed the <code>tidyverse</code> suite of packages and attached them with <code>library(tidyverse)</code>.</p>
+<ol style="list-style-type: decimal">
+<li><p>Use <code>filter</code> to extract data for your name (or another name of your choice).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">##</code></pre></div></li>
+<li><p>Arrange the data you produced in step 1 above by <code>Count</code>. In which year was the name most popular?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">##</code></pre></div></li>
+<li><p>BONUS (optional): Filter the data to extract <em>only</em> the row containing the most popular boys name in 1999.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">##</code></pre></div></li>
+</ol>
+</div>
+<div id="pipe-operator" class="section level3">
+<h3>Pipe operator</h3>
+<p>There is one very special operator in R called a <strong>pipe</strong> operator that looks like this: <code>%&gt;%</code>. It allows us to “chain” several function calls and, as each function returns an object, feed it into the next call in a single statement, without needing extra variables to store the intermediate results. The point of the pipe is to help you write code in a way that is easier to read and understand as we will see below.</p>
+<div class="figure">
+<img src="R/Rintro/images/magrittr.png" />
+
+</div>
+<p>There is no need to load any additional packages as the operator is made available via the <code>magrittr</code> package installed as part of <code>tidyverse</code>. Let’s rewrite the sequence of commands to output ordered counts for names “Alex” or “Mark”.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># unpiped version</span>
+baby_names_alexmark &lt;-<span class="st"> </span><span class="kw">filter</span>(baby_names, Year <span class="op">==</span><span class="st"> </span><span class="dv">1992</span> <span class="op">&amp;</span><span class="st"> </span>(Name <span class="op">==</span><span class="st"> &quot;Alex&quot;</span> <span class="op">|</span><span class="st"> </span>Name <span class="op">==</span><span class="st"> &quot;Mark&quot;</span>))
+<span class="kw">arrange</span>(baby_names_alexmark, <span class="kw">desc</span>(Count))</code></pre></div>
+<pre><code>## # A tibble: 4 x 4
+##   Name  Sex   Count  Year
+##   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 Mark  Boys   8743  1992
+## 2 Alex  Boys   7348  1992
+## 3 Alex  Girls   366  1992
+## 4 Mark  Girls    20  1992</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># piped version</span>
+baby_names <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(Year <span class="op">==</span><span class="st"> </span><span class="dv">1992</span> <span class="op">&amp;</span><span class="st"> </span>(Name <span class="op">==</span><span class="st"> &quot;Alex&quot;</span> <span class="op">|</span><span class="st"> </span>Name <span class="op">==</span><span class="st"> &quot;Mark&quot;</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(Count))</code></pre></div>
+<pre><code>## # A tibble: 4 x 4
+##   Name  Sex   Count  Year
+##   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 Mark  Boys   8743  1992
+## 2 Alex  Boys   7348  1992
+## 3 Alex  Girls   366  1992
+## 4 Mark  Girls    20  1992</code></pre>
+<p>Hint: try pronouncing “then” whenever you see <code>%&gt;%</code>. Using pseudocode, we can see what the pipe is doing:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># unpiped version</span>
+<span class="kw">filter</span>(dataset, condition)
+
+<span class="co"># piped version</span>
+dataset <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(condition)
+
+<span class="co"># what the pipe is doing</span>
+output_of_thing_on_left <span class="op">%&gt;%</span><span class="st"> </span>becomes_input_of_thing_on_right</code></pre></div>
+<p>Advantages of using the pipe:</p>
+<ol style="list-style-type: decimal">
+<li>We can avoid creating intermediate variables, such as <code>baby_names_alexmark</code></li>
+<li>Less to type</li>
+<li>Easier to read and follow the logic (especially avoiding using nested functions)</li>
+</ol>
+</div>
+<div id="exercise-2.2" class="section level3">
+<h3>Exercise 2.2</h3>
+<p>Rewrite the solution to Exercise 2.1 using pipes. Remember that we were looking for the year your name reached its maximum popularity. For that, we filtered the data and then arranged by <code>Count</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">##</code></pre></div>
+</div>
+</div>
+<div id="plotting-data" class="section level2">
+<h2>Plotting data</h2>
+<div class="alert alert-info">
+<p><strong>GOAL: Plot baby name trends over time – using the <code>qplot()</code> function</strong></p>
+</div>
+<p>It can be difficult to spot trends when looking at summary tables. Plotting the data makes it easier to identify interesting patterns.</p>
+<p>R has decent plotting tools built-in – see e.g., <code>help(plot)</code>. However, again, we will make use of a <em>contributed package</em> from <code>tidyverse</code> called <code>ggplot2</code>.</p>
+<p>For quick and simple plots we can use the <code>qplot()</code> function from <code>ggplot2</code>. For example, we can plot the number of babies given the name “Diana” over time like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">baby_names_diana &lt;-<span class="st"> </span><span class="kw">filter</span>(baby_names, Name <span class="op">==</span><span class="st"> &quot;Diana&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Count,
+     <span class="dt">data =</span> baby_names_diana)</code></pre></div>
+<p><img src="R/Rintro/figures/unnamed-chunk-31-1.png" width="672" /></p>
+<p>Interestingly, there are usually some gender-atypical names, even for very strongly gendered names like “Diana”. Splitting these trends out by <code>Sex</code> is very easy:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Count, <span class="dt">color =</span> Sex,
+      <span class="dt">data =</span> baby_names_diana)</code></pre></div>
+<p><img src="R/Rintro/figures/unnamed-chunk-32-1.png" width="672" /></p>
+<div id="exercise-3" class="section level3">
+<h3>Exercise 3</h3>
+<p><strong>Plot peak popularity of your name</strong></p>
+<p>Make sure the <code>tidyverse</code> suite of packages is installed, and that you have attached them using <code>library(tidyverse)</code>.</p>
+<ol style="list-style-type: decimal">
+<li><p>Use <code>filter</code> to extract data for your name (same as previous exercise)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">##</code></pre></div></li>
+<li><p>Plot the data you produced in step 1 above, with <code>Year</code> on the x-axis and <code>Count</code> on the y-axis.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">##</code></pre></div></li>
+<li><p>Adjust the plot so that is shows boys and girls in different colors.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">##</code></pre></div></li>
+<li><p>BONUS (Optional): Adjust the plot to use lines instead of points.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">##</code></pre></div></li>
+</ol>
+</div>
+</div>
+<div id="creating-variables" class="section level2">
+<h2>Creating variables</h2>
+<div class="alert alert-info">
+<p><strong>GOAL: To learn how to create new variables with and without grouped data.</strong> In particular:</p>
+<ol style="list-style-type: decimal">
+<li>Creating new variables (columns) — using the <code>mutate()</code> function</li>
+<li>Creating new variables within groups — by combining the <code>mutate()</code> and <code>group_by()</code> functions</li>
+<li>Recode existing variables — by combining the <code>mutate()</code> and <code>case_when()</code> functions</li>
+</ol>
+</div>
+<p>We want to use these skills to find out which names have been the most popular.</p>
+<div id="create-or-modify-columns" class="section level3">
+<h3>Create or modify columns</h3>
+<p>So far we’ve used <code>Count</code> as a measure of popularity. A better approach is to use proportion to avoid confounding popularity with the number of babies born in a given year.</p>
+<p>The <code>mutate()</code> function makes it easy to add or modify the columns of a <code>data.frame</code>. For example, we can use it to rescale the count of each name in each year:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">baby_names &lt;-<span class="st"> </span>baby_names <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Count_1k =</span> Count<span class="op">/</span><span class="dv">1000</span>)
+<span class="kw">head</span>(baby_names) </code></pre></div>
+<pre><code>## # A tibble: 6 x 5
+##   Name  Sex   Count  Year Count_1k
+##   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+## 1 Mary  Girls 51474  1960     51.5
+## 2 Susan Girls 39200  1960     39.2
+## 3 Linda Girls 37314  1960     37.3
+## 4 Karen Girls 36376  1960     36.4
+## 5 Donna Girls 34133  1960     34.1
+## 6 Lisa  Girls 33702  1960     33.7</code></pre>
+</div>
+<div id="operating-by-group" class="section level3">
+<h3>Operating by group</h3>
+<p>Because of the nested nature of our data, we want to compute proportion or rank <strong>within</strong> each <code>Sex</code> by <code>Year</code> group. The <code>dplyr</code> package has a <code>group_by()</code> function that makes this relatively straightforward. Here’s the logic behind this process:</p>
+<div class="figure">
+<img src="R/Rintro/images/mutate_group_by.png" />
+
+</div>
+<p>Note that the <code>group_by()</code> function converts a <strong>data frame</strong> into a <strong>grouped data frame</strong> — that is, a data frame with metadata identifying the groups. The data remain grouped until you change the groups by running <code>group_by()</code> again or remove the grouping metadata using <code>ungroup()</code>.</p>
+<p>Here’s the code that implements the calculation:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">baby_names &lt;-
+<span class="st">  </span>baby_names <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(Year, Sex) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Rank =</span> <span class="kw">rank</span>(Count_1k)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ungroup</span>()
+
+<span class="kw">head</span>(baby_names)</code></pre></div>
+<pre><code>## # A tibble: 6 x 6
+##   Name  Sex   Count  Year Count_1k  Rank
+##   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;
+## 1 Mary  Girls 51474  1960     51.5  7331
+## 2 Susan Girls 39200  1960     39.2  7330
+## 3 Linda Girls 37314  1960     37.3  7329
+## 4 Karen Girls 36376  1960     36.4  7328
+## 5 Donna Girls 34133  1960     34.1  7327
+## 6 Lisa  Girls 33702  1960     33.7  7326</code></pre>
+</div>
+<div id="recoding-variables" class="section level3">
+<h3>Recoding variables</h3>
+<p>It’s often necessary to create a new variable that is a recoded version of an existing variable. For example, we might want to take our <code>Count_1k</code> variable and create a new variable that divides it into <code>low</code>, <code>medium</code>, and <code>high</code> categories. To do this, we can use the <code>case_when()</code> function within the <code>mutate()</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">baby_names &lt;-
+<span class="st">  </span>baby_names <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Count_levels =</span> <span class="kw">case_when</span>(
+                            Count_1k <span class="op">&lt;=</span><span class="st"> </span><span class="dv">10</span>                  <span class="op">~</span><span class="st"> &quot;low&quot;</span>,
+                            Count_1k  <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span> <span class="op">&amp;</span><span class="st"> </span>Count_1k <span class="op">&lt;=</span><span class="st"> </span><span class="dv">40</span> <span class="op">~</span><span class="st"> &quot;medium&quot;</span>,
+                            Count_1k  <span class="op">&gt;</span><span class="st"> </span><span class="dv">40</span>                  <span class="op">~</span><span class="st"> &quot;high&quot;</span>
+                            ))</code></pre></div>
+</div>
+<div id="exercise-4" class="section level3">
+<h3>Exercise 4</h3>
+<p><strong>Most popular names</strong></p>
+<p>In this exercise your goal is to identify the most popular names for each year.</p>
+<ol style="list-style-type: decimal">
+<li><p>Use <code>mutate()</code> and <code>group_by()</code> to create a column named <code>Proportion</code> where <code>Proportion = Count/sum(Count)</code> for each <code>Year X Sex</code> group. Use pipes wherever it makes sense.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">##</code></pre></div></li>
+<li><p>Use <code>mutate()</code> and <code>group_by()</code> to create a column named <code>Rank</code> where <code>Rank = rank(desc(Count))</code> for each <code>Year X Sex</code> group.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">##</code></pre></div></li>
+<li><p>Filter the baby names data to display only the most popular name for each <code>Year X Sex</code> group. Keep only the columns: <code>Year</code>, <code>Name</code>, <code>Sex</code>, and <code>Proportion</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">##</code></pre></div></li>
+<li><p>Plot the data produced in step 3, putting <code>Year</code> on the x-axis and <code>Proportion</code> on the y-axis. How has the proportion of babies given the most popular name changed over time?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">##</code></pre></div></li>
+<li><p>BONUS (optional): Which names are the most popular for both boys and girls?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">##</code></pre></div></li>
+</ol>
+</div>
+</div>
+<div id="aggregating-variables" class="section level2">
+<h2>Aggregating variables</h2>
+<div class="alert alert-info">
+<p><strong>GOAL: To learn how to aggregate data to create summaries with and without grouped data.</strong> In particular:</p>
+<ol style="list-style-type: decimal">
+<li>Collapsing data into summaries — using the <code>summarize()</code> function</li>
+<li>Creating summaries within groups — by combining the <code>summarize()</code> and <code>group_by()</code> functions</li>
+</ol>
+</div>
+<p>You may have noticed that the percentage of babies given the most popular name of the year appears to have decreased over time. We can compute a more robust measure of the popularity of the most popular names by calculating the number of babies given one of the top 10 girl or boy names of the year.</p>
+<p>To compute this measure we need to operate within groups, as we did using <code>mutate()</code> above, but this time we need to collapse each group into a single summary statistic. We can achieve this using the <code>summarize()</code> function.</p>
+<p>First, let’s see how this function works without grouping. The following code outputs the total number of girls and boys in the data:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">baby_names <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">Girls_n =</span> <span class="kw">sum</span>(Sex<span class="op">==</span><span class="st">&quot;Girls&quot;</span>),
+            <span class="dt">Boys_n =</span> <span class="kw">sum</span>(Sex<span class="op">==</span><span class="st">&quot;Boys&quot;</span>))</code></pre></div>
+<pre><code>## # A tibble: 1 x 2
+##   Girls_n Boys_n
+##     &lt;int&gt;  &lt;int&gt;
+## 1  641084 407491</code></pre>
+<p>Next, using <code>group_by()</code> and <code>summarize()</code> together, we can calculate the number of babies born each year. Here’s the logic behind this process:</p>
+<div class="figure">
+<img src="R/Rintro/images/summarize_group_by.png" />
+
+</div>
+<p>Note that, unlike with the <code>mutate()</code> function, the <code>summarize()</code> function returns a data frame with fewer rows than the original, because of aggregation.</p>
+<p>Here’s the code that implements the calculation:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bn_by_year &lt;-
+<span class="st">  </span>baby_names <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(Year) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">Total =</span> <span class="kw">sum</span>(Count)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ungroup</span>()
+
+<span class="kw">head</span>(bn_by_year)</code></pre></div>
+<pre><code>## # A tibble: 6 x 2
+##    Year   Total
+##   &lt;dbl&gt;   &lt;dbl&gt;
+## 1  1960 4154377
+## 2  1961 4140244
+## 3  1962 4035234
+## 4  1963 3958791
+## 5  1964 3887800
+## 6  1965 3626029</code></pre>
+<div id="exercise-5" class="section level3">
+<h3>Exercise 5</h3>
+<p><strong>Popularity of the most popular names</strong></p>
+<p>In this exercise we will plot trends in the proportion of boys and girls given one of the 10 most popular names each year.</p>
+<ol style="list-style-type: decimal">
+<li><p>Filter the <code>baby_names</code> data, retaining only the 10 most popular girl and boy names for each year.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">##</code></pre></div></li>
+<li><p>Summarize the data produced in step one to calculate the total Proportion of boys and girls given one of the top 10 names each year.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">##</code></pre></div></li>
+<li><p>Plot the data produced in step 2, with year on the x-axis and total proportion on the y axis. Color by <code>Sex</code> and notice the trend.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">##</code></pre></div></li>
+</ol>
+</div>
+</div>
+<div id="saving-work" class="section level2">
+<h2>Saving work</h2>
+<div class="alert alert-info">
+<p><strong>GOAL: To learn how to save objects, data, and scripts for later use.</strong></p>
+</div>
+<p>Now that we have made some changes to our data set, we might want to save those changes to a file.</p>
+<div id="saving-individual-datasets" class="section level3">
+<h3>Saving individual datasets</h3>
+<p>You might find functions <code>write_csv()</code> and <code>write_rds()</code> from package <code>readr</code> handy!</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># write data to a .csv file</span>
+<span class="kw">write_csv</span>(baby_names, <span class="st">&quot;babyNames.csv&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># write data to an R file</span>
+<span class="kw">write_rds</span>(baby_names, <span class="st">&quot;babyNames.rds&quot;</span>)</code></pre></div>
+</div>
+<div id="saving-multiple-datasets" class="section level3">
+<h3>Saving multiple datasets</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>() <span class="co"># list objects in our workspace</span>
+<span class="kw">save</span>(baby_names_diana, bn_by_year, baby_names_subset, <span class="dt">file=</span><span class="st">&quot;myDataFiles.RData&quot;</span>)  </code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Load the &quot;myDataFiles.RData&quot;
+## load(&quot;myDataFiles.RData&quot;) </code></pre></div>
+</div>
+<div id="saving-loading-workspaces" class="section level3">
+<h3>Saving &amp; loading workspaces</h3>
+<p>In addition to importing individual datasets, R can save and load entire “workspaces”. The workspace is your current R working environment and includes any user-defined objects. At the end of a session, you can save an “image” of the current workspace, which allows you to automatically reload the objects you previously created.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>() <span class="co"># list objects in our workspace</span>
+<span class="kw">save.image</span>(<span class="dt">file=</span><span class="st">&quot;myWorkspace.RData&quot;</span>) <span class="co"># save workspace </span>
+<span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>()) <span class="co"># remove all objects from our workspace </span>
+<span class="kw">ls</span>() <span class="co"># list stored objects to make sure they are deleted</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Load the &quot;myWorkspace.RData&quot; file and check that it is restored
+<span class="kw">load</span>(<span class="st">&quot;myWorkspace.RData&quot;</span>) <span class="co"># load myWorkspace.RData</span>
+<span class="kw">ls</span>() <span class="co"># list objects</span></code></pre></div>
+</div>
+</div>
+<div id="exercise-solutions" class="section level2">
+<h2>Exercise solutions</h2>
+<div id="ex-0-prototype" class="section level3">
+<h3>Ex 0: prototype</h3>
+<ol style="list-style-type: decimal">
+<li><p>2 plus 2</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># or</span>
+<span class="kw">sum</span>(<span class="dv">2</span>, <span class="dv">2</span>)</code></pre></div>
+<pre><code>## [1] 4</code></pre></li>
+<li><p>square root of 10</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sqrt</span>(<span class="dv">10</span>)</code></pre></div>
+<pre><code>## [1] 3.16228</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># or</span>
+<span class="dv">10</span><span class="op">^</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>)</code></pre></div>
+<pre><code>## [1] 3.16228</code></pre></li>
+<li><p>Find “An Introduction to R”.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Go to the main help page by running &#39;help.start() or using the GUI</span>
+<span class="co"># menu, find and click on the link to &quot;An Introduction to R&quot;.</span></code></pre></div></li>
+</ol>
+</div>
+<div id="ex-1-prototype" class="section level3">
+<h3>Ex 1: prototype</h3>
+<ol style="list-style-type: decimal">
+<li><p>Open the <code>read_csv()</code> help page to determine how to use it to read in data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?read_csv</code></pre></div></li>
+<li><p>Read the baby names data using the <code>read_csv()</code> function and assign the result with the name <code>baby_names</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">baby_names &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;babyNames.csv&quot;</span>)</code></pre></div></li>
+<li><p>BONUS (optional): Save the <code>baby_names</code> data as a Stata data set <code>babynames.dta</code> and as an R data set <code>babynames.rds</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write_dta</span>(baby_names, <span class="dt">version =</span> <span class="dv">15</span>, <span class="dt">path =</span> “babynames.dta”)
+
+<span class="kw">write_rds</span>(baby_names, <span class="dt">file =</span> “babynames.rds”)</code></pre></div></li>
+</ol>
+</div>
+<div id="ex-2.1-prototype" class="section level3">
+<h3>Ex 2.1: prototype</h3>
+<ol style="list-style-type: decimal">
+<li><p>Use <code>filter</code> to extract data for your name (or another name of your choice).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">baby_names_george &lt;-<span class="st"> </span><span class="kw">filter</span>(baby_names, Name <span class="op">==</span><span class="st"> &quot;George&quot;</span>)</code></pre></div></li>
+<li><p>Arrange the data you produced in step 1 above by <code>Count</code>. In which year was the name most popular?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">arrange</span>(baby_names_george, <span class="kw">desc</span>(Count))</code></pre></div>
+<pre><code>## # A tibble: 97 x 4
+##    Name   Sex   Count  Year
+##    &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1 George Boys  14063  1960
+##  2 George Boys  13638  1961
+##  3 George Boys  12553  1962
+##  4 George Boys  12084  1963
+##  5 George Boys  11793  1964
+##  6 George Boys  10683  1965
+##  7 George Boys   9942  1966
+##  8 George Boys   9702  1967
+##  9 George Boys   9388  1968
+## 10 George Boys   9203  1969
+## # … with 87 more rows</code></pre></li>
+<li><p>BONUS (optional): Filter the data to extract <em>only</em> the row containing the most popular boys name in 1999.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">baby_names_boys_<span class="dv">1999</span> &lt;-<span class="st"> </span><span class="kw">filter</span>(baby_names,
+                               Year <span class="op">==</span><span class="st"> </span><span class="dv">1999</span> <span class="op">&amp;</span><span class="st"> </span>Sex <span class="op">==</span><span class="st"> &quot;Boys&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">filter</span>(baby_names_boys_<span class="dv">1999</span>, Count <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(Count))</code></pre></div>
+<pre><code>## # A tibble: 1 x 4
+##   Name  Sex   Count  Year
+##   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 Jacob Boys  35361  1999</code></pre></li>
+</ol>
+</div>
+<div id="ex-2.2-prototype" class="section level3">
+<h3>Ex 2.2: prototype</h3>
+<p>Rewrite the solution to Exercise 2.1 using pipes.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">baby_names <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">filter</span>(Name <span class="op">==</span><span class="st"> &quot;George&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">arrange</span>(<span class="kw">desc</span>(Count))</code></pre></div>
+<pre><code>## # A tibble: 97 x 4
+##    Name   Sex   Count  Year
+##    &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1 George Boys  14063  1960
+##  2 George Boys  13638  1961
+##  3 George Boys  12553  1962
+##  4 George Boys  12084  1963
+##  5 George Boys  11793  1964
+##  6 George Boys  10683  1965
+##  7 George Boys   9942  1966
+##  8 George Boys   9702  1967
+##  9 George Boys   9388  1968
+## 10 George Boys   9203  1969
+## # … with 87 more rows</code></pre>
+</div>
+<div id="ex-3-prototype" class="section level3">
+<h3>Ex 3: prototype</h3>
+<ol style="list-style-type: decimal">
+<li><p>Use <code>filter()</code> to extract data for your name (same as previous exercise).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">baby_names_george &lt;-<span class="st"> </span><span class="kw">filter</span>(baby_names, Name <span class="op">==</span><span class="st"> &quot;George&quot;</span>)</code></pre></div></li>
+<li><p>Plot the data you produced in step 1 above, with <code>Year</code> on the x-axis and <code>Count</code> on the y-axis.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Count, <span class="dt">data =</span> baby_names_george)</code></pre></div>
+<p><img src="R/Rintro/figures/unnamed-chunk-68-1.png" width="672" /></p></li>
+<li><p>Adjust the plot so that is shows boys and girls in different colors.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Count, <span class="dt">color =</span> Sex, <span class="dt">data =</span> baby_names_george)</code></pre></div>
+<p><img src="R/Rintro/figures/unnamed-chunk-69-1.png" width="672" /></p></li>
+<li><p>BONUS (Optional): Adjust the plot to use lines instead of points.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Count, <span class="dt">color =</span> Sex, <span class="dt">data =</span> baby_names_george, <span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>)</code></pre></div>
+<p><img src="R/Rintro/figures/unnamed-chunk-70-1.png" width="672" /></p></li>
+</ol>
+</div>
+<div id="ex-4-prototype" class="section level3">
+<h3>Ex 4: prototype</h3>
+<ol style="list-style-type: decimal">
+<li><p>Use <code>mutate()</code> and <code>group_by()</code> to create a column named <code>Proportion</code> where <code>Proportion = Count/sum(Count)</code> for each <code>Year X Sex</code> group.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">baby_names &lt;-<span class="st"> </span>
+<span class="st">  </span>baby_names <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(Year, Sex) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Proportion =</span> Count<span class="op">/</span><span class="kw">sum</span>(Count)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ungroup</span>()
+
+<span class="kw">head</span>(baby_names) </code></pre></div>
+<pre><code>## # A tibble: 6 x 5
+##   Name  Sex   Count  Year Proportion
+##   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;
+## 1 Mary  Girls 51474  1960     0.0255
+## 2 Susan Girls 39200  1960     0.0194
+## 3 Linda Girls 37314  1960     0.0185
+## 4 Karen Girls 36376  1960     0.0180
+## 5 Donna Girls 34133  1960     0.0169
+## 6 Lisa  Girls 33702  1960     0.0167</code></pre></li>
+<li><p>Use <code>mutate()</code> and <code>group_by()</code> to create a column named <code>Rank</code> where <code>Rank = rank(desc(Count))</code> for each <code>Year X Sex</code> group.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">baby_names &lt;-<span class="st"> </span>
+<span class="st">  </span>baby_names <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(Year, Sex) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Rank =</span> <span class="kw">rank</span>(<span class="kw">desc</span>(Count))) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ungroup</span>()
+
+<span class="kw">head</span>(baby_names)</code></pre></div>
+<pre><code>## # A tibble: 6 x 6
+##   Name  Sex   Count  Year Proportion  Rank
+##   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;
+## 1 Mary  Girls 51474  1960     0.0255     1
+## 2 Susan Girls 39200  1960     0.0194     2
+## 3 Linda Girls 37314  1960     0.0185     3
+## 4 Karen Girls 36376  1960     0.0180     4
+## 5 Donna Girls 34133  1960     0.0169     5
+## 6 Lisa  Girls 33702  1960     0.0167     6</code></pre></li>
+<li><p>Filter the baby names data to display only the most popular name for each <code>Year X Sex</code> group.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">top1 &lt;-<span class="st"> </span>
+<span class="st">  </span>baby_names <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(Rank <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(Year, Name, Sex, Proportion)
+
+<span class="kw">head</span>(top1)</code></pre></div>
+<pre><code>## # A tibble: 6 x 4
+##    Year Name    Sex   Proportion
+##   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt;
+## 1  1960 Mary    Girls     0.0255
+## 2  1960 David   Boys      0.0403
+## 3  1961 Mary    Girls     0.0236
+## 4  1961 Michael Boys      0.0409
+## 5  1962 Lisa    Girls     0.0234
+## 6  1962 Michael Boys      0.0411</code></pre></li>
+<li><p>Plot the data produced in step 3, putting <code>Year</code> on the x-axis and <code>Proportion</code> on the y-axis. How has the proportion of babies given the most popular name changed over time?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="dt">x =</span> Year, 
+      <span class="dt">y =</span> Proportion, 
+      <span class="dt">color =</span> Sex, 
+      <span class="dt">data =</span> top1, 
+      <span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>)</code></pre></div>
+<p><img src="R/Rintro/figures/unnamed-chunk-74-1.png" width="672" /></p></li>
+<li><p>BONUS (optional): Which names are the most popular for both boys and girls?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">girls_and_boys &lt;-<span class="st"> </span><span class="kw">inner_join</span>(<span class="kw">filter</span>(baby_names, Sex <span class="op">==</span><span class="st"> &quot;Boys&quot;</span>), 
+                            <span class="kw">filter</span>(baby_names, Sex <span class="op">==</span><span class="st"> &quot;Girls&quot;</span>),
+                            <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;Year&quot;</span>, <span class="st">&quot;Name&quot;</span>))
+
+girls_and_boys &lt;-<span class="st"> </span><span class="kw">mutate</span>(girls_and_boys,
+                        <span class="dt">Product =</span> Count.x <span class="op">*</span><span class="st"> </span>Count.y,
+                        <span class="dt">Rank =</span> <span class="kw">rank</span>(<span class="kw">desc</span>(Product)))
+
+<span class="kw">filter</span>(girls_and_boys, Rank <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</code></pre></div>
+<pre><code>## # A tibble: 1 x 12
+##   Name   Sex.x Count.x  Year Proportion.x Rank.x Sex.y Count.y Proportion.y Rank.y   Product  Rank
+##   &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;        &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;        &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;
+## 1 Taylor Boys     7688  1993      0.00392     51 Girls   21266       0.0118      7 163493008     1</code></pre></li>
+</ol>
+</div>
+<div id="ex-5-prototype" class="section level3">
+<h3>Ex 5: prototype</h3>
+<ol style="list-style-type: decimal">
+<li><p>Filter the baby_names data, retaining only the 10 most popular girl and boy names for each year.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">most_popular &lt;-<span class="st"> </span>
+<span class="st">  </span>baby_names <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(Year, Sex) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(Rank <span class="op">&lt;=</span><span class="st"> </span><span class="dv">10</span>)
+
+<span class="kw">head</span>(most_popular, <span class="dt">n =</span> <span class="dv">10</span>)</code></pre></div>
+<pre><code>## # A tibble: 10 x 6
+## # Groups:   Year, Sex [1]
+##    Name     Sex   Count  Year Proportion  Rank
+##    &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;
+##  1 Mary     Girls 51474  1960     0.0255     1
+##  2 Susan    Girls 39200  1960     0.0194     2
+##  3 Linda    Girls 37314  1960     0.0185     3
+##  4 Karen    Girls 36376  1960     0.0180     4
+##  5 Donna    Girls 34133  1960     0.0169     5
+##  6 Lisa     Girls 33702  1960     0.0167     6
+##  7 Patricia Girls 32102  1960     0.0159     7
+##  8 Debra    Girls 26737  1960     0.0132     8
+##  9 Cynthia  Girls 26725  1960     0.0132     9
+## 10 Deborah  Girls 25264  1960     0.0125    10</code></pre></li>
+<li><p>Summarize the data produced in step one to calculate the total Proportion of boys and girls given one of the top 10 names each year.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">top10 &lt;-<span class="st"> </span>
+<span class="st">  </span>most_popular <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># it is already grouped by Year and Sex</span>
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">TotalProportion =</span> <span class="kw">sum</span>(Proportion))</code></pre></div></li>
+<li><p>Plot the data produced in step 2, with year on the x-axis and total proportion on the y axis. Color by <code>Sex</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="dt">x =</span> Year, 
+      <span class="dt">y =</span> TotalProportion, 
+      <span class="dt">color =</span> Sex,
+      <span class="dt">data =</span> top10,
+      <span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>)</code></pre></div>
+<p><img src="R/Rintro/figures/unnamed-chunk-78-1.png" width="672" /></p></li>
+</ol>
+</div>
+</div>
+<div id="wrap-up-1" class="section level2">
+<h2>Wrap-up</h2>
+<div id="feedback-1" class="section level3">
+<h3>Feedback</h3>
+<p>These workshops are a work-in-progress, please provide any feedback to: <a href="mailto:help@iq.harvard.edu">help@iq.harvard.edu</a></p>
+</div>
+<div id="resources-2" class="section level3">
+<h3>Resources</h3>
+<ul>
+<li>IQSS
+<ul>
+<li>Workshops: <a href="https://dss.iq.harvard.edu/workshop-materials" class="uri">https://dss.iq.harvard.edu/workshop-materials</a></li>
+<li>Data Science Services: <a href="https://dss.iq.harvard.edu/" class="uri">https://dss.iq.harvard.edu/</a></li>
+<li>Research Computing Environment: <a href="https://iqss.github.io/dss-rce/" class="uri">https://iqss.github.io/dss-rce/</a></li>
+</ul></li>
+<li>HBS
+<ul>
+<li>Research Computing Services workshops: <a href="https://training.rcs.hbs.org/workshops" class="uri">https://training.rcs.hbs.org/workshops</a></li>
+<li>Other HBS RCS resources: <a href="https://training.rcs.hbs.org/workshop-materials" class="uri">https://training.rcs.hbs.org/workshop-materials</a></li>
+<li>RCS consulting email: <a href="mailto:research@hbs.edu">mailto:research@hbs.edu</a></li>
+</ul></li>
+<li>Software (all free!):
+<ul>
+<li>R and R package download: <a href="http://cran.r-project.org" class="uri">http://cran.r-project.org</a></li>
+<li>Rstudio download: <a href="http://rstudio.org" class="uri">http://rstudio.org</a></li>
+<li>ESS (emacs R package): <a href="http://ess.r-project.org/" class="uri">http://ess.r-project.org/</a></li>
+</ul></li>
+<li>Cheatsheets
+<ul>
+<li><a href="https://rstudio.com/wp-content/uploads/2019/01/Cheatsheets_2019.pdf" class="uri">https://rstudio.com/wp-content/uploads/2019/01/Cheatsheets_2019.pdf</a></li>
+</ul></li>
+<li>Online tutorials
+<ul>
+<li><a href="https://swirlstats.com/" class="uri">https://swirlstats.com/</a></li>
+<li><a href="https://r4ds.had.co.nz/" class="uri">https://r4ds.had.co.nz/</a></li>
+<li><a href="https://hbs-rcs.github.io/R_Intro-gapminder/base-r/" class="uri">https://hbs-rcs.github.io/R_Intro-gapminder/base-r/</a></li>
+<li><a href="https://www.pluralsight.com/search?q=R" class="uri">https://www.pluralsight.com/search?q=R</a></li>
+<li><a href="https://www.datacamp.com/" class="uri">https://www.datacamp.com/</a></li>
+<li><a href="https://rmarkdown.rstudio.com/lesson-1.html" class="uri">https://rmarkdown.rstudio.com/lesson-1.html</a></li>
+</ul></li>
+<li>Getting help:
+<ul>
+<li>Documentation and tutorials: <a href="http://cran.r-project.org/other-docs.html" class="uri">http://cran.r-project.org/other-docs.html</a></li>
+<li>Recommended R packages by topic: <a href="http://cran.r-project.org/web/views/" class="uri">http://cran.r-project.org/web/views/</a></li>
+<li>Mailing list: <a href="https://stat.ethz.ch/mailman/listinfo/r-help" class="uri">https://stat.ethz.ch/mailman/listinfo/r-help</a></li>
+<li>StackOverflow: <a href="http://stackoverflow.com/questions/tagged/r" class="uri">http://stackoverflow.com/questions/tagged/r</a></li>
+<li>R-Bloggers: <a href="https://www.r-bloggers.com/" class="uri">https://www.r-bloggers.com/</a></li>
+</ul></li>
+<li>Coming from …
+<ul>
+<li>Stata: <a href="http://www.princeton.edu/~otorres/RStata.pdf" class="uri">http://www.princeton.edu/~otorres/RStata.pdf</a></li>
+<li>SAS/SPSS: <a href="http://r4stats.com/books/free-version/" class="uri">http://r4stats.com/books/free-version/</a></li>
+<li>Matlab: <a href="http://www.math.umaine.edu/~hiebeler/comp/matlabR.pdf" class="uri">http://www.math.umaine.edu/~hiebeler/comp/matlabR.pdf</a></li>
+<li>Python: <a href="http://mathesaurus.sourceforge.net/matlab-python-xref.pdf" class="uri">http://mathesaurus.sourceforge.net/matlab-python-xref.pdf</a></li>
+</ul></li>
+</ul>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="Rinstall.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Rmodels.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/IQSS/dss-workshops/edit/master/R/Rintro/Rintro.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Data_Science_Workshops.pdf", "Data_Science_Workshops.epub"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

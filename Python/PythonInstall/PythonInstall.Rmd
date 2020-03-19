@@ -1,0 +1,125 @@
+
+```{r, include=FALSE, echo=FALSE}
+knitr::opts_chunk$set(message=FALSE, fig.path="Python/PythonIntro/figures/")
+knitr::opts_knit$set(root.dir="Python/PythonIntro") # base.url = "/" # base.dir="Python/PythonIntro"
+# knitr::opts_chunk$set(eval=FALSE, results=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+```
+
+# (PART) Python {-}
+
+# Python Installation
+
+<div class="alert alert-info">
+  **Your professional conduct is greatly appreciated. Out of respect to your fellow workshop attendees and instructors, please arrive at your workshop on time, having pre-installed all necessary software and materials. This will likely take 15-20 minutes.**
+</div>
+
+Before starting any of our Python workshops, it is necessary to complete 2 tasks. Please make sure both of these tasks are completed **before** you attend your workshop, as, depending on your internet speed, they may take a long time.
+
+1. download and install **Anaconda Python 3 distribution**
+2. download and unzip **class materials**
+
+![](Python/PythonInstall/images/install_software_Python.png)
+
+
+## Troubleshooting session
+
+We will hold a troubleshooting session during the 20 minutes prior to the start of the workshop. 
+**If you are unable to complete all of the tasks, please stop by the training room during this session.**
+Once the workshop starts we will **NOT** be able to give you one-to-one assistance with troubleshooting installation problems. Likewise, if you arrive late, please do **NOT** expect one-to-one assistance for anything covered at the beginning of the workshop.
+
+
+## Software
+
+The Anaconda Python distribution is designed with data Science in mind and contains a curated set of 270+ pre-installed Python packages.
+
+**Mac OS X:** 
+
+* Install Anaconda Python 3 by downloading and running [this .pkg file](https://repo.anaconda.com/archive/Anaconda3-2019.10-MacOSX-x86_64.pkg). Accept the defaults proposed by the Anaconda installer.
+
+**Windows:** 
+
+* Install Anaconda Python 3 by downloading and running [this .exe file](https://repo.anaconda.com/archive/Anaconda3-2019.10-Windows-x86_64.exe). Accept the defaults proposed by the Anaconda installer.
+
+**Linux:** 
+
+* Install Anaconda Python 3 by downloading and running [this .sh file](https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh). Accept the defaults proposed by the Anaconda installer.
+
+<div class="alert alert-success">
+**Success? After installing, please start the `Anaconda Navigator` program. If you were successful with the installation, you should see a window similar to this:**
+</div>
+
+![](Python/PythonInstall/images/Anaconda_navigator.png)
+
+To check that the installation is working correctly, click the `Launch` button under `Jupyter Notebook`. A new blank notebook should be created.
+
+<div class="alert alert-danger">
+**If you are having any difficulties with the installation, please stop by the training room 20 minutes prior to the start of the workshop.**
+</div>
+
+
+## Materials
+
+Download class materials for your workshop:
+
+* Python Introduction: <https://github.com/IQSS/dss-workshops/raw/master/Python/PythonIntro.zip>
+* Python Webscraping: <https://github.com/IQSS/dss-workshops/raw/master/Python/PythonWebScrape.zip>
+
+Extract materials from the zipped directory (Right-click => Extract All on Windows, double-click on Mac) and move them to your desktop.
+
+It will be useful when you view the above materials for you to see the different file extensions on your computer. Here are instructions for enabling this:
+
+* [Mac OS](https://support.apple.com/guide/mac-help/show-or-hide-filename-extensions-on-mac-mchlp2304/mac)
+* [Windows OS](http://kb.winzip.com/kb/entry/26/)
+
+
+## Jupyter notebook interfaces
+
+We will be using Jupyter Notebooks to run our Python code. Notebooks are web-based applications that allow you to create and share documents that contain live code, equations, visualizations, and narrative text. There are two main ways to interact with Jupyter Notebooks:
+
+1. using **JupyterLab**
+2. opening a **Jupyter Notebook** directly in a browser
+
+[Jupyter Notebooks](https://jupyter-notebook.readthedocs.io/en/stable/) are documents that combine text, code, images, math, and rich media and can be viewed in a browser. Opening a notebook directly in a browser lets you read and write to the file, but does not give you access to any other files in the same folder (e.g., data or images) unless these are manually uploaded using the browser. You also do not have access to features typically found on integrated development environments (IDEs). [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/), in contrast, is an interface for Jupyter Notebooks that is a way to access notebooks within a web-based IDE. Among other things, this allows easy access to data files and media associated with the notebook without having to manually upload these using a browser. For this reason, **we strongly recommend that you use JupyterLab to interact with notebooks**.
+
+
+### Launch JupyterLab
+
+Here's how to start JupyterLab and open a notebook within this interface (**recommended**):
+
+1. Start the `Anaconda Navigator` program
+2. Click the `Launch` button under `Jupyter Lab`
+3. A browser window will open with your computer's files listed on the left hand side of the page. Navigate to the folder with the workshop materials that you downloaded to your desktop and double-click on the folder
+4. Within the workshop materials folder, double-click on the file with the word "BLANK" in the name (`*_BLANK.ipynb`). A pop-up window will ask you to `Select Kernal` --- you should select the Python 3 kernal. The Jupyter Notebook should now open on the right hand side of the page
+
+
+### Launch Jupyter Notebook
+
+Here's how to start a Jupyter Notebook directly in a browser (**NOT** recommended unless JupyterLab doesn't work on your machine):
+
+1. Start the `Anaconda Navigator` program
+2. Click the `Launch` button under `Jupyter Notebook`
+3. Create a new folder (by default called `Untitled Folder`) by clicking the drop down menu called `New` on the top right of the page
+4. Navigate to the new `Untitled Folder` and check the box next to it. Then click the `Rename` button on the top left of the page and name the folder with the workshop name (e.g., `PythonIntro`)
+5. Click on the folder you just created. From within the folder, click `Upload` in the top right of the page. A pop-up window will open; use it to navigate to the workshop materials folder on your desktop. Select and open all the files in the top level of the folder (e.g., `PythonIntro_BLANK.ipynb`, `PythonIntro.ipynb`, `Alice_in_wonderland.txt`, and `Characters.txt`)
+6. Click the blue colored `Upload` button to upload the files to the `PythonIntro` folder on your browser
+
+Optionally, to view images inline you can additionally complete these steps:
+
+7. Within the `PythonIntro` folder on your browser, create a new folder (by default called `Untitled Folder`) by clicking the drop down menu called `New` on the top right of the page
+8. Navigate to the new `Untitled Folder` and check the box next to it. Then click the `Rename` button on the top left of the page and name the folder with the name `images`
+9. Click on the folder you just created. From within the folder, click `Upload` in the top right of the page. A pop-up window will open; use it to navigate to the workshop materials folder on your desktop. Within that folder, click on the `images` folder. Select and open all the files within the `images` folder (e.g., `name_of_image.png`)
+10. Click the blue colored `Upload` button to upload the files to the `images` folder within the workshop materials folder on your browser
+
+
+## Resources
+
+* IQSS 
+    + Workshops: <https://dss.iq.harvard.edu/workshop-materials>
+    + Data Science Services: <https://dss.iq.harvard.edu/>
+    + Research Computing Environment: <https://iqss.github.io/dss-rce/>
+
+* HBS
+    + Research Computing Services workshops: <https://training.rcs.hbs.org/workshops>
+    + Other HBS RCS resources: <https://training.rcs.hbs.org/workshop-materials>
+    + RCS consulting email: <mailto:research@hbs.edu>
+    
