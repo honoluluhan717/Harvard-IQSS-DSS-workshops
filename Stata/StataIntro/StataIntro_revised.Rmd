@@ -599,7 +599,7 @@ use newtalent.dta, clear
 
 tab Sex job, chi2
 
-ttest workperweek, by(sex)
+ttest workperweek, by(Sex)
 oneway workperweek marital
 
 save newtalent.dta, replace
