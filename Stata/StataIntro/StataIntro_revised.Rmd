@@ -16,11 +16,11 @@ opts_chunk$set(engine="stata", engine.path=statapath, comment="")
 * Basic summary statistics
 * Basic graphs
 * Basic data management
-* Bivariate analyses 
+* Bivariate analyses
 
 ## Setup
 
-### Class Structure and organization 
+### Class Structure and organization
 
 * Informal --- Ask questions at any time. Really!
 * Collaboration is encouraged - please spend a minute introducing yourself to your neighbors!
@@ -30,7 +30,7 @@ opts_chunk$set(engine="stata", engine.path=statapath, comment="")
 
 ### Prerequisites
 
-This is an introductory Stata course: 
+This is an introductory Stata course:
 
 * Assumes no prior knowledge of **how to use** Stata
 * We do assume you know **why** you want to learn Stata. If you don't, and want a comparison of Stata to other statistical software, see our [Data Science Tools](./DataScienceTools.html) workshop
@@ -47,11 +47,11 @@ In particular, our goals are:
 2. Get data in and out of Stata
 3. Compute statistics and construct graphical displays
 4. Compute new variables and transformations
-5. Perform univariate and bivariate data analyses 
+5. Perform univariate and bivariate data analyses
 
 
 
-## Stata basics 
+## Stata basics
 
 * Used in a variety of disciplines
 * User-friendly
@@ -60,13 +60,13 @@ In particular, our goals are:
 * Student and other discount packages available at reasonable cost
 
 
-## What is Stata? 
+## What is Stata?
 
 * Stata is a complete, integrated statistical software package that you can perform data analysis, data management, and create graphics
-* Stata is commonly used among health, sociology, and economics researchers, particularly those working with large data sets 
+* Stata is commonly used among health, sociology, and economics researchers, particularly those working with large data sets
 
 
-## Why use Stata? 
+## Why use Stata?
 
 * It is easy to learn and is supported by a wide range of introductory textbooks
 * It offers a wide range of statistical analyses
@@ -77,7 +77,7 @@ In particular, our goals are:
 * Student and other discount packages available at reasonable cost
 
 
-When Stata is running, variables, data, etc., are **stored in memory**. The user can use **clear** command to clear up memory before running further commands, unless they want to **save** their changes in the original dataset or in a new dataset. 
+When Stata is running, variables, data, etc., are **stored in memory**. The user can use **clear** command to clear up memory before running further commands, unless they want to **save** their changes in the original dataset or in a new dataset.
 
 
 
@@ -92,22 +92,22 @@ When Stata is running, variables, data, etc., are **stored in memory**. The user
 
 ### GUI, command window, and do-file
 
-There are different ways of interacting with Stata. The three ways are through: 
+There are different ways of interacting with Stata. The three ways are through:
 
 1. **GUI**. The GUI makes commands you are using for the first time easier to learn by showing you the command and the proper syntax for the operation that you wish to perform.
 
-2. **Command window**. From the command window you can type commands when you aren't using the GUI to manage and analyze your data. 
-    + The pros to run your code in the command window is that you can quickly produce output of a single command. 
-    + The cons to run your code in the command window is that you cannot properly store your syntax to reproduce in the future. 
-    + Thus, we are introducing the third way, and if you want to develop reasonable expertise in        Stata, we always recommend the third way to write your code: 
+2. **Command window**. From the command window you can type commands when you aren't using the GUI to manage and analyze your data.
+    + The pros to run your code in the command window is that you can quickly produce output of a single command.
+    + The cons to run your code in the command window is that you cannot properly store your syntax to reproduce in the future.
+    + Thus, we are introducing the third way, and if you want to develop reasonable expertise in        Stata, we always recommend the third way to write your code:
 
-3. **Do-file**. There are several advantages with using a do-file: 
-    + Do-file allows you to submit more than one command to Stata at once 
-    + Do-file has specialized features for programmers such as syntax highlighting, code folding, autocompletion, and bookmarks to important lines in your code, brace matching, and more 
-    + With a do-file, it is easy to **save** your codes, **review** your codes, **change** your codes, and **share** your codes with others 
+3. **Do-file**. There are several advantages with using a do-file:
+    + Do-file allows you to submit more than one command to Stata at once
+    + Do-file has specialized features for programmers such as syntax highlighting, code folding, autocompletion, and bookmarks to important lines in your code, brace matching, and more
+    + With a do-file, it is easy to **save** your codes, **review** your codes, **change** your codes, and **share** your codes with others
 
 
-Here are some resources for learning more about Stata and Do-file: 
+Here are some resources for learning more about Stata and Do-file:
 
 * <https://www.stata.com/>
 * <https://www.stata.com/manuals13/gsw13.pdf>
@@ -153,14 +153,14 @@ To get help in Stata type `help` followed by topic or command, e.g., `help codeb
 
 Start Stata and locate/change the current working directory:
 
-1. print current working directory 
+1. print current working directory
 
 ```{stata}
-pwd 
+pwd
 
 ```
 
-2. change working directory 
+2. change working directory
 
 ```{stata}
 cd "C:/Users/yiw640/Desktop/StataIntro/"
@@ -237,12 +237,12 @@ What if my data is from another statistical software program?
 
 **GOAL: To learn the basic commands to review, inspect, and plot data in Stata.** In particular:
 
-1. know more about the variables in our dataset --- using the `describe`, `codebook`, and `browse` commands 
-2. produce univariate distribution using `histogram`, and bivariate distribution using `scatterplot` 
-3. tabulate or summarize your data within certain groups using `bysort` 
+1. know more about the variables in our dataset --- using the `describe`, `codebook`, and `browse` commands
+2. produce univariate distribution using `histogram`, and bivariate distribution using `scatterplot`
+3. tabulate or summarize your data within certain groups using `bysort`
 
 
-The most frequently used commands for reviewing and inspecting data are summarized below: 
+The most frequently used commands for reviewing and inspecting data are summarized below:
 
     + describe // labels, storage type etc.
     + sum // statistical summary (mean, sd, min/max etc.)
@@ -309,30 +309,30 @@ graph matrix educ age inc
 
 ### The `by` command
 
-Sometimes, you'd like to generate output based on different categories of a grouping variable, For example: 
+Sometimes, you'd like to generate output based on different categories of a grouping variable, For example:
 
-1. you want to know the distribution of happiness seperately for men and women: tabulate **happy** by sex 
+1. you want to know the distribution of happiness seperately for men and women: tabulate **happy** by sex
 
 ```{stata}
 bysort sex: tab happy
 ```
 
-2. you want to know the mean level of education for different marital status:  summarize **education** by marital status 
+2. you want to know the mean level of education for different marital status:  summarize **education** by marital status
 
 ```{stata}
-bysort marital: sum educ 
+bysort marital: sum educ
 ```
 
 
-Save your changes to the original `gss.dta` dataset. 
+Save your changes to the original `gss.dta` dataset.
 
 
 ### Exercise 1
 
 
-We are using The Generations of Talent Study (**talent.dta**) to practice reading in data, and plotting data, and performing descrptive statistics. 
+We are using The Generations of Talent Study (**talent.dta**) to practice reading in data, and plotting data, and performing descrptive statistics.
 
-The dataset aims to examine quality of employment as experienced by today's multigenerational workforces. Here is a codebook of the subset variables. 
+The dataset aims to examine quality of employment as experienced by today's multigenerational workforces. Here is a codebook of the subset variables.
 
 
 | Variable name | Label                                                                |
@@ -353,7 +353,7 @@ The dataset aims to examine quality of employment as experienced by today's mult
 
 1. Use the dataset, "talent.dta", open a new do-file and write on the do-file, after the exercise save it to the folder
 2. Examine a few selected variables using the describe, sum and codebook commands
-3. Produce a histogram distribution of hours worked (**workload**) and add a normal curve 
+3. Produce a histogram distribution of hours worked (**workload**) and add a normal curve
 4. Summarize the total household income last year (**income**) by marital status
 5. Cross-tabulate marital status with respondents' type of main job (**job**)
 6. Summarize the total household income last year (**income**) for married individuals only
@@ -363,7 +363,7 @@ The dataset aims to examine quality of employment as experienced by today's mult
 
 ### Labels
 
-**GOAL**: To learn how to add **variable labels** and **value labels** in Stata 
+**GOAL**: To learn how to add **variable labels** and **value labels** in Stata
 
 1. You never know why and when your data may be reviewed
 2. ALWAYS label every variable no matter how insignificant it may seem
@@ -374,7 +374,7 @@ The dataset aims to examine quality of employment as experienced by today's mult
 * Variable labels
 
 ```{stata}
-  use gss.dta, replace 
+  use gss.dta, replace
   /* Labelling and renaming */
   // Label variable inc "household income"
   label var inc "household income"
@@ -418,7 +418,7 @@ The dataset aims to examine quality of employment as experienced by today's mult
 
 ## Generating & replacing variables
 
-**GOAL: Sometimes you want to create a new variable based on values of existing variables/recode a variable, `generate` and `replace` strategy allow you to do that: 
+**GOAL: Sometimes you want to create a new variable based on values of existing variables/recode a variable, `generate` and `replace` strategy allow you to do that:
 
 
 It is useful to start with blank values and fill them in based on values of existing variables
@@ -438,7 +438,7 @@ It is useful to start with blank values and fill them in based on values of exis
 
 ### Exercise 2
 
-Open the **talent.dta** data, use the basic data management tools we have learned to add labels and generate new variables. 
+Open the **talent.dta** data, use the basic data management tools we have learned to add labels and generate new variables.
 
 
 1. Tabulate the variable, marital status (**marital**), with and without labels
@@ -451,19 +451,19 @@ Open the **talent.dta** data, use the basic data management tools we have learne
 
 
 
-## Bivariate analyses 
+## Bivariate analyses
 
 **GOAL: To learn the basic commands for performing chi-squared test, t-test, and one-way ANOVA.**
 
 
-### Chi-squared test 
+### Chi-squared test
 
 The Chi-squared statistic is commonly used for testing relationships between categorical variables.
 
 In Stata, both the **tabulate** and **tabi** commands conduct the Pearson's Chi-square test. The **tabulate** (may be abbreviated as **tab**) command produces one- or two-way frequency tables given one or two variables. The commands also can run a Chi-square test using the **chi2** option:
 
 ```{stata}
- tab sex happy, chi2 
+ tab sex happy, chi2
 ```
 
 The first command conducts a Chi-square test for a 2x2 table, while the second and third commands run the test for 3x2 and 2x3 tables, respectively.
@@ -475,15 +475,15 @@ The first command conducts a Chi-square test for a 2x2 table, while the second a
 ```
 
 
-### T-test 
+### T-test
 
 The t-test is a type of inferential statistic used to determine if there is a significant difference between the means of two groups.
 
-Types of T-test: 
+Types of T-test:
 
 * Single sample t-test. It tests the null hypothesis that the population mean is equal to the given number specified
-* Paired t-test. For each student, It tests the whether mean differences in the value of two variables is equal to zero, when the observations are not independent of another. For example, test each student's reading test score and math test score 
-* Independent group t-test. It is designed to compare means of same variable between two groups. For example, test GRE score between students from two countries 
+* Paired t-test. For each student, It tests the whether mean differences in the value of two variables is equal to zero, when the observations are not independent of another. For example, test each student's reading test score and math test score
+* Independent group t-test. It is designed to compare means of same variable between two groups. For example, test GRE score between students from two countries
 In our example, we conduct an independent group t-test to compare the mean income (**inc**) between male and female (**sex**)
 
 ```{stata}
@@ -498,7 +498,7 @@ ttest inc, by(sex)
 One-way ANOVA allows us to test the equality of more than two means.For example, our dataset contains the income of the population (**inc**)and the four region of the country (**region**)for each state. Using oneway, we can test the equality of all four means.
 
 ```{stata}
-oneway inc region 
+oneway inc region
 
 ```
 
@@ -516,12 +516,12 @@ oneway inc region if region== "east" | region== "west"
 ### Exercise 3
 
 
-Open the **newtalent.dta** data, use the basic data management tools we have learned to conduct bivariate analysis. 
+Open the **newtalent.dta** data, use the basic data management tools we have learned to conduct bivariate analysis.
 
 
-1.  Test the relationship between two variables sex and type of main job 
-2.  Test if there is a significant difference in hours worked per week and sex 
-3.  Test if there is a significant difference in hours worked per week and marital status 
+1.  Test the relationship between two variables sex and type of main job
+2.  Test if there is a significant difference in hours worked per week and sex
+3.  Test if there is a significant difference in hours worked per week and marital status
 
 
 
@@ -548,13 +548,13 @@ tab I3
 sum income
 codebook job
 
-hist workperweek, normal 
+hist workperweek, normal
 
 bysort marital: sum income
-bysort job: tab marital 
+bysort job: tab marital
 summarize income if marital == 1
 
-save talent.dta, replace 
+save talent.dta, replace
 ```
 
 
@@ -564,7 +564,7 @@ save talent.dta, replace
 use talent.dta, clear
 
 tab marital
-tab marital, nol 
+tab marital, nol
 
 gen overwork = .
 replace overwork = 1 if workperweek > 40
@@ -588,21 +588,21 @@ replace work_family = 2 if B3A > B3B
 replace work_family = 1 if B3A < B3B
 replace work_family = 0 if B3A == B3B
 
-save newtalent.dta, replace 
+save newtalent.dta, replace
 
 ```
 
 
 ### Ex 3: prototype
 ```{stata}
-use newtalent.dta, clear 
+use newtalent.dta, clear
 
-tab Sex job, chi2 
+tab Sex job, chi2
 
 ttest workperweek, by(sex)
-oneway workperweek marital 
+oneway workperweek marital
 
-save newtalent.dta, replace 
+save newtalent.dta, replace
 
 ```
 
@@ -617,7 +617,7 @@ These workshops are a work in progress, please provide any feedback to: help@iq.
 
 ### Resources
 
-* IQSS 
+* IQSS
     + Workshops: <https://dss.iq.harvard.edu/workshop-materials>
     + Data Science Services: <https://dss.iq.harvard.edu/>
     + Research Computing Environment: <https://iqss.github.io/dss-rce/>
@@ -631,4 +631,3 @@ These workshops are a work in progress, please provide any feedback to: help@iq.
     + UCLA website: <http://www.ats.ucla.edu/stat/Stata/>
     + Stata website: <http://www.stata.com/help.cgi?contents>
     + Email list: <http://www.stata.com/statalist/>
-    
