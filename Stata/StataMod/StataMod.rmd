@@ -1,1 +1,354 @@
 
+```{r, echo=FALSE, message=FALSE}
+require(knitr)
+statapath <- "C:/Program Files/Stata16/StataMP-64.exe"
+opts_chunk$set(collectcode = TRUE, echo = FALSE, cleanlog = FALSE, engine="stata", engine.path=list(stata=statapath), comment="")
+```
+
+
+# Stata Modeling 
+
+**Topics**
+
+* Stata modeling
+    + Testing model assumptions
+    + Multiple regression
+    + Interactions
+    + Exporting regression tables
+* Conditional marginal means 
+    + MEM: marginal effects at the mean
+    + AME: average marginal effects
+    + MER: marginal effects at representative values
+    
+    
+## Setup
+
+### Class Structure and organization 
+
+* Informal --- Ask questions at any time. Really!
+* Collaboration is encouraged - please spend a minute introducing yourself to your neighbors!
+* If you are using a laptop, you will need to adjust file paths accordingly
+* Make comments in your Do-file - save on flash drive or email to yourself
+
+
+### Prerequisites
+
+This is an intermediate-level Stata modeling workshop 
+
+* Assumes basic knowledge of Stata
+* Not appropriate for people already well familiar with modeling in Stata
+* If you are catching on before the rest of the class, experiment with command features described in help files
+
+
+## Goals
+
+<div class="alert alert-success">
+We will learn about the Stata language by analyzing data from the general social survey (gss).
+In particular, our goals are:
+
+1. Fit models in Stata 
+2. Test modeling assumptions
+3. 
+4. 
+5. 
+</div>
+
+
+## Multiple regression
+
+<div class="alert alert-info">
+**GOAL: To learn the basics about modeling in Stata, test model assumptions, how to add interaction terms and categorical predictors.** In particular:
+
+1. Fit multiple regression in Stata 
+2. Test model assumptions 
+2. Add interactions 
+3. Add categorical predictors 
+</div>
+
+Notes: 
+* The model specification should be informed by theory - i.e., our substantive knowledge of the subject matter. 
+* It's important to include all relevant predictors in the model, otherwise our estimates will be biased.
+
+
+### Today's Dataset
+
+* We have a sub-data on a variety of variables for all 50 states, drawn from the General Social Survey (``gss``)
+* Variables include population, density, energy use, voting tendencies, graduation rates, income, etc.
+* We're going to be predicting **mean composite SAT score** using **education expense**, controlling for **median family income**, and **% of HS graduates taking SAT**
+* Does the amount of money spent on education (``expense``) affect the mean SAT score (``csat``) in a state, controlling for family income(``income``) and percentage of students taking SATs (``percent``) in a state?
+
+
+### Opening Files
+
+* Look at bottom left hand corner of Stata screen
+    + This is the directory Stata is currently reading from
+* Files are located in the dataSets folder in StataMod
+* Start by telling Stata where to look for these
+
+```{stata}
+  // change directory
+  cd "~/Desktop/Stata/StataMod"
+```
+
+
+* Use dir to see what is in the directory:
+
+```{stata}
+  dir
+  cd dataSets
+```
+
+
+* Load the data
+
+```{stata}
+  // use the states data set
+  use dataSets/states.dta
+```
+
+
+### Steps for running multiple regression:
+
+1.  Examine descriptive statistics
+2.  Look at relationship graphically and test correlation(s)
+3.  Run an initial model 
+4.  Test regression assumptions 
+5.  Finalize model and interpret results 
+
+
+#### Preliminaries
+
+* First, let's look at some descriptives 
+
+```{stata}
+  // descriptive statistics and correlations
+  sum expense income percent csat
+  
+  pwcorr csat expense income percent
+  pwcorr csat expense income percent, sig
+```
+
+
+#### Fit the model 
+
+* regress csat on expense, income, and percent 
+
+```{stata}
+  regress csat expense 
+  regress csat expense income percent 
+```
+
+
+#### OLS assumptions
+
+* Assumption 1: Specification is appropriate (i.e., no relevant omitted variables)
+* Assumption 2: Homoscedasticity (The variance around the regression model is the same for all values of the predictor variable)
+* Assumption 3: Multicollinearity 
+* Assumption 4: There needs to be linear relationships between variables 
+* Assumption 5: Normal Distribution of residuals (errors) 
+
+
+##### Specification
+
+The model specification should be informed by theory - i.e., our substantive knowledge of the subject matter. 
+It's important to include all relevant predictors in the model, otherwise our estimates will be biased.
+
+* Goodness of fit
+
+
+##### Homoscedasticity
+
+* rvfplot(read residual-versus-fitted plot) graphs the residuals against the fitted values 
+* In a well-fitted model, there should be no pattern to the residuals plotted against the fitted
+  values
+
+```{stata}
+  rvfplot
+```
+
+##### Multicollinearity
+
+* When the degree of multicollinearity increases, the regression coefficients can be unstable and the standrard error for the correlation get inflated 
+* The rule of thumb is that a variable with vif (variance infltion factor) value greater than 10 should be re-examined
+
+```{stata}
+vif
+```
+
+
+##### Linearity 
+
+* We we perform a regression analysis, we assume that the relationship between the response variable and the predictors is linear. 
+
+```{stata}
+  twoway (scatter csat expense)(lfit csat expense)(lowess csat expense)
+```
+
+
+#### Normality
+
+* A simple histogram of the residuals can be informative
+
+```{stata}
+  // graph the residual values of csat
+  predict resid, residual
+  histogram resid, normal 
+```
+
+* Type -help regress postestimation- for more information about these statistical tools. 
+
+
+### Exercise 0
+
+**Multiple Regression**
+
+Open the datafile, states.dta.
+
+1.  Select a few variables to use in a multiple regression of your own. Before running the regression, examine descriptive of the variables and generate a few scatterplots.
+
+```{stata}
+##
+```
+
+2.  Run your regression
+
+```{stata}
+##
+```
+
+3.  Examine the plausibility of the assumptions of normality and homogeneity
+
+```{stata}
+##
+```
+
+
+### Interactions
+
+
+* What if we wanted to test an interaction between percent & high?
+* Option 1: generate product terms by hand
+
+```{stata}
+  // generate product of percent and high
+  gen percenthigh = percent*high 
+  regress csat expense income percent high percenthigh
+```
+
+
+* What if we wanted to test an interaction between percent & high?
+* Option 2: Let Stata do your dirty work
+
+```{stata}
+  // use the # sign to represent interactions 
+  regress csat percent high c.percent#c.high
+  // same as . regress csat c.percent##high
+```
+
+
+### Categorical Predictors
+
+* For categorical variables, we first need to dummy code
+* Use region as example
+    + Option 1: create dummy codes before fitting regression model
+
+```{stata}
+  // create region dummy codes using tab 
+  tab region, gen(region)
+
+  //regress csat on region
+  regress csat region1 region2 region3
+```
+
+
+* For categorical variables, we first need to dummy code
+* Use region as example
+    + Option 2: Let Stata do it for you
+
+```{stata}
+  // regress csat on region using fvvarlist syntax
+  // see help fvvarlist for details
+  regress csat i.region
+```
+
+
+### Exercise 1
+
+**Regression, Categorical Predictors, & Interactions**
+
+Open the datafile, states.dta.
+
+1.  Add on to the regression equation that you created in exercise 1 by generating an interaction term and testing the interaction.
+
+```{stata}
+##
+```
+
+2.  Try adding a categorical variable to your regression (remember, it will need to be dummy coded). You could use region or generate a new categorical variable from one of the continuous variables in the dataset.
+
+```{stata}
+##
+```
+
+
+## Exporting & saving results
+
+<div class="alert alert-info">
+**GOAL: To learn how to store and export Stata models.** In particular:
+
+1. How to store and compare between models 
+2. How to export stata model to Excel 
+</div>
+
+
+### Regression tables
+
+* Store and compare results 
+* Stata offers several user-friendly options for storing and viewing regression output from multiple models
+* First, download the necessary packages:
+
+```{stata}
+  // install outreg2 package
+  findit outreg2
+```
+
+
+### Saving & replaying
+
+* You can store regression model results in Stata
+
+```{stata}
+  // fit two regression models and store the results
+  regress csat expense income percent high
+  estimates store Model1
+  regress csat expense income percent high i.region
+  estimates store Model2
+```
+
+
+* Stored models can be recalled
+
+```{stata}
+  // Display Model1
+  estimates replay Model1
+```
+
+
+* Stored models can be compared
+
+```{stata}
+  // Compare Model1 and Model2 coefficients
+  estimates table Model1 Model2
+```
+
+
+### Exporting to Excel
+
+* Avoid human error when transferring coefficients into tables
+* Excel can be used to format publication-ready tables
+
+```{stata}
+  outreg2 [Model1 Model2] using csatprediction.xls, replace
+```
+
+
