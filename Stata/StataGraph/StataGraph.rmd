@@ -6,16 +6,10 @@ statapath <- "/Applications/Stata/StataMP.app/Contents/MacOS/stata-mp"
 opts_chunk$set(engine="stata", engine.path=statapath, comment="")
 ```
 
-# Stata Modeling & Graphing
+# Stata Graphing
 
 **Topics**
 
-* Stata modeling
-    + Simple regression
-    + Multiple regression
-    + Interactions
-    + Exporting regression tables
-    + Testing model assumptions
 * Stata graphing
     + Univariate graphs
     + Bivariate graphs
@@ -195,7 +189,7 @@ Harvard FAS affiliates can install a licensed version from <http://downloads.fas
 
 ![](Stata/StataModGraph/images/bargraph.png)
 
-### Exercise 2
+### Exercise 0
 
 **Histograms Bar Graphs**
 
@@ -319,7 +313,7 @@ Harvard FAS affiliates can install a licensed version from <http://downloads.fas
                               Crime Study 2000) legend(off)
 ```
 
-### Exercise 3
+### Exercise 1
 
 **The TwoWay Family**
 
@@ -384,15 +378,6 @@ Open the datafile, NatNeighCrimeStudy.dta.
 **
 ```
 
-### Ex 2: prototype
-```{stata}
-**
-```
-
-### Ex 3: prototype
-```{stata}
-**
-```
 
 
 ## Wrap-up
