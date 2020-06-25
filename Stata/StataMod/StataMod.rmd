@@ -75,8 +75,8 @@ Throughout this workshop we will go through these stages several times as we fit
 <div class="alert alert-success">
 **We will learn about the Stata modeling by analyzing data from three datasets.** In particular, our goals are:
 
-1. Run OLS regression model following modeling workflow 
-2. Run logistic regression model following modeling workflow 
+1. Run OLS regression following modeling workflow 
+2. Run logistic regression following modeling workflow 
 3. Estimate marginal effects in a OLS regression 
 4. Estimate marginal effects in a logistic regression 
 </div>
@@ -200,8 +200,11 @@ OLS regression relies on several assumptions, including:
   // graph the residual values of csat
   predict resid, residual
   histogram resid, normal 
-  
-  // examine homoscedasticity
+```
+
+* Examine homoscedasticity
+
+```{stata}
   rvfplot, yline(0)
 ```
 
@@ -213,7 +216,7 @@ OLS regression relies on several assumptions, including:
 ### Interactions
 
 * What if we wanted to test an interaction between percent & high?
-* Option 1: generate product terms by hand
+   + Option 1: generate product terms by hand
 
 ```{stata}
   // generate product of percent and high
@@ -221,7 +224,7 @@ OLS regression relies on several assumptions, including:
   regress csat expense income percent high percenthigh
 ```
 
-* Option 2: Let Stata do your dirty work
+   + Option 2: Let Stata do your dirty work
 
 ```{stata}
   // use the # sign to represent interactions 
@@ -234,6 +237,7 @@ OLS regression relies on several assumptions, including:
 
 * For categorical variables, we first need to dummy code
 * Use region as example
+
     + Option 1: create dummy codes before fitting regression model
 
 ```{stata}
@@ -410,7 +414,7 @@ outreg2 [Model1 Model2] using csatprediction.xls, replace
 
 ### Recode the outcome variable 
 
-* Recode the composite SAT score (``csat``) into two categories - whether a region's mean SAT score is higher than or eaqul to, or lower than 1000. 
+* Recode the composite SAT score (``csat``) into two categories **whether a region's mean SAT score is higher than or eaqul to, or lower than 1000.**
 
 ```{stata}
 gen sat_binary = .
@@ -430,7 +434,7 @@ sum density percent expense
 
 ### Run the logit model 
 
-Let's predict the probability of having mean SAT score greater than or equal to 1000 based on `density`, `percent`, and `expense`.
+Let's predict the probability of having mean SAT score greater than or equal to 1000 based on ``density``, ``percent``, and ``expense``.
 
 Here's the model:
 
@@ -440,7 +444,7 @@ logit(sat_i) = \beta_01 + \beta_1densityp_i + \beta_2percent_i + \beta_3expense_
 $$
 </div>
 
-where $logit(\cdot)$ is the link function, which is equivalent to the log odds of `sat`:
+where $logit(\cdot)$ is the link function, which is equivalent to the log odds of ``sat``:
 
 <div class="alert alert-secondary">
 $$
