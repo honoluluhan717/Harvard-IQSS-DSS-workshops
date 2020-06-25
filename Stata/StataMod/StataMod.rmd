@@ -113,15 +113,15 @@ Throughout this workshop we will go through these stages several times as we fit
 
 ```{stata}
   // change directory
-  cd "~/Desktop/Stata/StataMod"
+cd "~/Desktop/Stata/StataMod"
 ```
 
 
 * Use dir to see what is in the directory:
 
 ```{stata}
-  dir
-  cd dataSets
+dir
+cd dataSets
 ```
 
 
@@ -129,7 +129,7 @@ Throughout this workshop we will go through these stages several times as we fit
 
 ```{stata}
   // use the states data set
-  use dataSets/states.dta
+use dataSets/states.dta
 ```
 
 
@@ -137,7 +137,7 @@ Throughout this workshop we will go through these stages several times as we fit
 
 ```{stata}
   // descriptive statistics 
-  sum expense income percent csat
+sum expense income percent csat
 ```
 
 
@@ -145,11 +145,11 @@ Throughout this workshop we will go through these stages several times as we fit
 
 ```{stata}
   // test correlations 
-  scatter expense income
-  scatter expense percent 
+scatter expense income
+scatter expense percent 
   
-  pwcorr csat expense income percent
-  pwcorr csat expense income percent, sig
+pwcorr csat expense income percent
+pwcorr csat expense income percent, sig
 ```
 
 
@@ -159,7 +159,7 @@ To fit a model in Stata, we first have to convert our theoretical model into
 a `formula` --- a symbolic representation of the model in Stata syntax:
 
 ```{r, eval=FALSE}
-# formula for model specification
+ // formula for model specification
 regress outcome pred1 pred2 pred3
 ```
 
@@ -174,7 +174,7 @@ $$
 * regress csat on expense, income, and percent 
 
 ```{stata}
-  regress csat expense income percent 
+regress csat expense income percent 
 ```
 
 
@@ -198,14 +198,14 @@ OLS regression relies on several assumptions, including:
 
 ```{stata}
   // graph the residual values of csat
-  predict resid, residual
-  histogram resid, normal 
+predict resid, residual
+histogram resid, normal 
 ```
 
 * Examine homoscedasticity
 
 ```{stata}
-  rvfplot, yline(0)
+rvfplot, yline(0)
 ```
 
 * Type -help regress postestimation- for more information about these statistical tools. 
@@ -220,15 +220,15 @@ OLS regression relies on several assumptions, including:
 
 ```{stata}
   // generate product of percent and high
-  gen percenthigh = percent*high 
-  regress csat expense income percent high percenthigh
+gen percenthigh = percent*high 
+regress csat expense income percent high percenthigh
 ```
 
    + Option 2: Let Stata do your dirty work
 
 ```{stata}
   // use the # sign to represent interactions 
-  regress csat percent high c.percent#c.high
+regress csat percent high c.percent#c.high
   // same as . regress csat c.percent##high
 ```
 
@@ -242,10 +242,10 @@ OLS regression relies on several assumptions, including:
 
 ```{stata}
   // create region dummy codes using tab 
-  tab region, gen(region)
+tab region, gen(region)
 
   //regress csat on region
-  regress csat region1 region2 region3
+regress csat region1 region2 region3
 ```
 
     + Option 2: Let Stata do it for you
@@ -253,7 +253,7 @@ OLS regression relies on several assumptions, including:
 ```{stata}
   // regress csat on region using fvvarlist syntax
   // see help fvvarlist for details
-  regress csat i.region
+regress csat i.region
 ```
 
 
@@ -409,7 +409,7 @@ outreg2 [Model1 Model2] using csatprediction.xls, replace
 
 ```{stata}
   // use the states data set
-  use dataSets/states.dta
+use dataSets/states.dta
 ```
 
 ### Recode the outcome variable 
