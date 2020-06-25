@@ -540,7 +540,7 @@ outreg2 using Mymodel.doc
 
 
 
-**Why use margins?** 
+## **Why use margins?** 
   
 1. Marginal effect tells us how a dependent variable changes when a specific independent variable 
    changes. When estimating marginal effect, other covariates are assumed to be held constant. 
