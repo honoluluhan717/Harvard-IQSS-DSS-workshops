@@ -10,24 +10,24 @@ opts_chunk$set(collectcode = TRUE, echo = FALSE, cleanlog = FALSE, engine="stata
 
 **Topics**
 
-* Models with continuous outcomes 
+* Models with continuous outcome
     + Fit OLS regression in Stata 
     + Test model assumptions 
     + Add interactions 
     + Add categorical predictors 
     + Exporting regression tables
 
-* Models with binary outcomes 
+* Models with binary outcome
     + Fit logistic regression in Stata 
-    + Obtain log odds/odds ratio 
+    + Obtain log odds and odds ratio 
 
-* Margins of OLS regression  
+* Margins of continuous outcome 
     + Margins by itself 
     + Margins for categorical predictor 
     + Margins for continuous predictor 
     + Marginsplot 
 
-* Margins of logistic regression     
+* Margins of binary outcome
     + APM and MEM
     + AAP and AME
     + APR and MER
@@ -52,19 +52,6 @@ This is an intermediate-level Stata modeling workshop
 * If you are catching on before the rest of the class, experiment with command features described in help files
 
 
-## Goals
-
-<div class="alert alert-success">
-**We will learn about the Stata language by analyzing data from two datasets.** In particular, our goals are:
-
-1. Fit models in Stata 
-2. Test modeling assumptions
-3. Add categorical predictors and interactions 
-4. Distinguish and choose from different types of margins  
-5. Obtain margins with interaction terms 
-</div>
-
-
 ## Modeling workflow
 
 Before we delve into the details of how to fit models in Stata, it's worth taking a step
@@ -81,6 +68,18 @@ but the process is sequential --- we move through the stages in order (though of
 ![](C:/Users/Yihan/.git/dss-workshops/Stata/StataMod/images/Stata_model_pipeline.png)
 
 Throughout this workshop we will go through these stages several times as we fit different types of model.
+
+
+## Goals
+
+<div class="alert alert-success">
+**We will learn about the Stata modeling by analyzing data from three datasets.** In particular, our goals are:
+
+1. Run OLS regression model following modeling workflow 
+2. Run logistic regression model following modeling workflow 
+3. Estimate marginal effects in a OLS regression 
+4. Estimate marginal effects in a logistic regression 
+</div>
 
 
 ## Models with continuous outcomes 
@@ -101,8 +100,8 @@ Throughout this workshop we will go through these stages several times as we fit
 * We have a dataset (``states.dta``) on a variety of variables for all 50 states
 * Variables include population, density, energy use, voting tendencies, graduation rates, income, etc.
 
-* We're going to be predicting **mean composite SAT score** using **education expense**, controlling for **median family income**, and **% of HS graduates taking SAT**
-* Does the amount of money spent on education (``expense``) affect the mean SAT score (``csat``) in a state, controlling for family income(``income``) and percentage of students taking SATs (``percent``) in a state?
+* We're going to be predicting mean composite SAT score using education expense, median family income,     and % of HS graduates taking SAT.
+* Does the amount of money spent on education (``expense``), family income(``income``), and percentage of   students taking SATs (``percent``)affect the mean SAT score (``csat``) in a state? 
 
 
 ### Set working directory 
@@ -269,7 +268,7 @@ Fit a OLS regression model to predict general happiness (``happy``) based on res
 
 ```
 
-2.  Run your regression.
+2.  Run your regression model. 
 
 ```{stata}
 ##
@@ -301,7 +300,9 @@ sum happy educ rincome
 tab sex 
 tab marital 
 
-// 2.  Run your regression.
+scatter happy rincome
+
+// 2.  Run your regression model. 
 
 regress happy i.sex educ i.marital rincome
 
@@ -336,8 +337,8 @@ regress happy i.sex##c.educ i.marital rincome
 * First, download the necessary packages:
 
 ```{stata}
-  // install outreg2 package
-  findit outreg2
+ // install outreg2 package
+findit outreg2
 ```
 
 
@@ -347,11 +348,11 @@ regress happy i.sex##c.educ i.marital rincome
 
 ```{stata}
   // fit two regression models and store the results
-  regress csat expense income percent high
-  estimates store Model1
+regress csat expense income percent high
+estimates store Model1
   
-  regress csat expense income percent high i.region
-  estimates store Model2
+regress csat expense income percent high i.region
+estimates store Model2
 ```
 
 
@@ -359,7 +360,7 @@ regress happy i.sex##c.educ i.marital rincome
 
 ```{stata}
   // Display Model1
-  estimates replay Model1
+estimates replay Model1
 ```
 
 
@@ -367,9 +368,9 @@ regress happy i.sex##c.educ i.marital rincome
 
 ```{stata}
   // Compare Model1 and Model2 coefficients
-  estimates table Model1 Model2
+estimates table Model1 Model2
   // Compare Model1 and Model2 fit 
-  lrtest Model1 Model2 
+lrtest Model1 Model2 
 ```
 
 
@@ -379,7 +380,7 @@ regress happy i.sex##c.educ i.marital rincome
 * Excel can be used to format publication-ready tables
 
 ```{stata}
-  outreg2 [Model1 Model2] using csatprediction.xls, replace
+outreg2 [Model1 Model2] using csatprediction.xls, replace
 ```
 
 
@@ -390,7 +391,7 @@ regress happy i.sex##c.educ i.marital rincome
 
 1. Set working directory and load data 
 2. Run summary statistics for outcome variable and predictors
-3. Run the model to obtain log odds/odds ratio 
+3. Run the model to obtain log odds and odds ratio 
 </div>
 
 
@@ -462,35 +463,35 @@ logit sat_binary density percent expense, or
 
 Use the data file, ``gss.dta``. Examine how age of a respondent (``age``), highest year of school completed (``degree``), hours per day watching TV (``tvhours``), and total family income for last year (``income``) relate to whether someone uses internet (``usenet``). 
 
-1.  Load the dataset 
+1.  Load the dataset. 
 
 ```{stata}
 ##
 
 ```
 
-2.  Run summary statistics, delete the sample who did not provide an answer 
+2.  Run summary statistics, delete the sample who did not provide an answer. 
 
 ```{stata}
 ##
 
 ```
 
-3.  Fit the logit model and save it as Model 1 
+3.  Fit the logit model and save it as Model 1. 
 
 ```{stata}
 ##
 
 ```
 
-4.  Add another predictor (``hrs1``) in the model and save the new model as Model 2 and compare between Model 1 and Model 2 
+4.  Add another predictor (``hrs1``) in the model and save the new model as Model 2 and compare between Model 1 and Model 2. 
 
 ```{stata}
 ##
 
 ```
 
-5.  Save the better fitted model output to a word document 
+5.  Save the output of the better fitted model to a word document. 
 
 ```{stata}
 ##
@@ -501,30 +502,30 @@ Use the data file, ``gss.dta``. Examine how age of a respondent (``age``), highe
   <summary><span style="color:red"><b>Click for Exercise 1 Solution</b></span></summary>
   <div class="alert alert-danger">
 ```{stata}
-// 1.  Load the dataset 
+// 1.  Load the dataset. 
 
 use gss.dta, clear 
 
-// 2.  Run summary statistics, delete the sample who did not provide an answer
+// 2.  Run summary statistics, delete the sample who did not provide an answer.
 
 tab usenet 
 drop if usenet == 9
 tab degree 
 sum age tvhours income 
 
-// 3.  Fit the logit model and save it as Model 1  
+// 3.  Fit the logit model and save it as Model 1.  
 
 logit usenet age i.degree tvhours income 
 est store Model1
 
-// 4.  Add another predictor (``hrs1``) in the model and save the new model as Model 2 and compare between Model 1 and Model 2 
+// 4.  Add another predictor (``hrs1``) in the model and save the new model as Model 2 and compare between Model 1 and Model 2. 
 
 logit usenet age i.degree tvhours income hrs1
 est store Model2 
 
 lrtest Model1 Model2
 
-// 5.  Save the better fitted model output to a word document 
+// 5.  Save the better fitted model output to a word document. 
 
 logit usenet age i.degree tvhours income hrs1
 outreg2 using Mymodel.doc
@@ -549,7 +550,7 @@ outreg2 using Mymodel.doc
 ## Margins with OLS regression 
 
 <div class="alert alert-info">
-  **GOAL: To learn margins of continuous outcomes in Stata.** In particular:
+  **GOAL: To learn margins with continuous outcome in Stata.** In particular:
   
 1. Margins by itself 
 2. Margins for categorical predictor 
@@ -563,7 +564,7 @@ outreg2 using Mymodel.doc
 * The case study examples use the Second National Health and Nutrition Examination Survey (NHANES II) 
   which was conducted in the mid to late 1970s. 
 * We will examine systolic blood pressure (``bpsystol``) based on respondent's age (``age``), whether      having diabetes (``diabetes``), and region (``region``).
-* The example in this section is completely made up for the purpose of demonstrating margins command. The   model is not based on any medical or theoretical knowledge whatsoever. 
+* The example is completely made up for the purpose of demonstrating margins command. The model is not     based on any medical research or theoretical knowledge whatsoever. 
 * Stata provides online access to an adultsonly extract from these data.
 * More on the study can be found at https://wwwn.cdc.gov/nchs/nhanes/nhanes2/
   
@@ -610,7 +611,7 @@ margins, region
 margins, at(age = (50 80))
 ```
 
-* This calculates the mean predicted value of ``bpsystol`` with age set to 50, and then again with age set to 80. We can also add more values by listing the numbers you want in a *numlist*:
+* The previous step calculates the mean predicted value of ``bpsystol`` with age set to 50, and then again with age set to 80. We can also add more values by listing the numbers you want in a *numlist*:
 
 ```{stata}
 margins, at(age=(50(5)80))
@@ -619,7 +620,7 @@ margins, at(age=(50(5)80))
 
 ### Marginsplot 
 
-* This calculates the mean predicted value of ```bpsystol`` with age set to 50, 55, 60, 65, 70, 75, and 80. We can further use ``marginsplot`` to graph the results. 
+* The previous step calculates the mean predicted value of ```bpsystol`` with age set to 50, 55, 60, 65, 70, 75, and 80. We can further use ``marginsplot`` to graph the results. 
 
 ```{stata}
 marginsplot
@@ -633,7 +634,9 @@ marginsplot
   
 Open the datafile ``gss.dta``
 
-1. Based on the previous model you specified in Exercise 1, obtain predicted general happiness (``happy``)
+1. Based on the previous model you specified in Exercise 0, obtain predicted general happiness (``happy``).
+
+Fit a OLS regression model to predict general happiness (``happy``) based on respondent's sex     (``sex``), marital status (``marital``), highest year of school completed (``educ``), and respondent's income for last year (``rincome``). 
 
 ```{stata}
 ##
@@ -705,7 +708,7 @@ marginsplot
 * We will be using the same dataset as the previous example: the Second National Health and Nutrition      Examination Survey (NHANES II) 
 * The examples were drawn from online materials from Prof. Richard Williams from 
   https://www3.nd.edu/~rwilliam/stats/Margins01.pdf
-* We will be predicting whether someone has diabetes (``diabetes``) using race (``black``), sex         (``female``), and age (``age``). 
+* We will be predicting whether someone has diabetes (``diabetes``) using race (``black``), sex            (``female``), and age (``age``). 
   
 ### Load the data 
     
@@ -765,7 +768,8 @@ marginsplot
   
   Open the datafile ``gss.dta``
 
-1. Based on the previous model you specified in Exercise 1, obtain APM for degree, and calculate MEM 
+1. Based on the previous model you specified in Exercise 1, obtain APM for ``degree``, and calculate MEM. 
+Examine how age of a respondent (``age``), highest year of school completed (``degree``), hours per day watching TV (``tvhours``), and total family income for last year (``income``) relate to whether someone uses internet (``usenet``). 
 
 ```{stata}
 ##
@@ -779,7 +783,7 @@ marginsplot
 
 ```
 
-3. Create graphics for your model 
+3. Create graphics for your model. 
 
 ```{stata}
 ##
@@ -790,7 +794,7 @@ marginsplot
   <summary><span style="color:red"><b>Click for Exercise 3 Solution</b></span></summary>
   <div class="alert alert-danger">
 ```{stata}
- // 1. Based on the previous model you specified in Exercise 1, obtain APM for degree, and calculate MEM 
+ // 1. Based on the previous model you specified in Exercise 1, obtain APM for degree, and calculate MEM.
 
 logit usenet age i.degree tvhours income 
 
@@ -802,8 +806,7 @@ margins, dydx(degree) atmeans
 margins degree, at(tvhours=(0 1 2 3 4 5 6 7 8 9 10) vsquish 
 margins, dydx(degree) at(tvhours=(0 1 2 3 4 5 6 7 8 9 10)) vsquish 
 
- // 3. Create graphics for your model 
-
+ // 3. Create graphics for your model. 
 marginsplot
 
 ```
