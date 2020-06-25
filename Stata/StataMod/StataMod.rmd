@@ -28,9 +28,9 @@ opts_chunk$set(collectcode = TRUE, echo = FALSE, cleanlog = FALSE, engine="stata
     + Marginsplot 
 
 * Margins of binary outcome
-    + APM and MEM
-    + AAP and AME
-    + APR and MER
+    + Adjusted predictions at the means (APM) and Marginal effects at the mean (MEM)
+    + Marginal effects at the means (MEM) and Average marginal effects (AME)
+    + Average marginal effects (AME) and Marginal effects at representative values (MER)
   
   
 ## Setup
