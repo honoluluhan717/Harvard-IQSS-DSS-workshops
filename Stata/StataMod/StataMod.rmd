@@ -82,10 +82,10 @@ Throughout this workshop we will go through these stages several times as we fit
 </div>
 
 
-## Models with continuous outcomes 
+## Models with continuous outcome
 
 <div class="alert alert-info">
-**GOAL: To learn modeling with continuous outcomes in Stata.** In particular:
+**GOAL: To learn modeling with continuous outcome in Stata.** In particular:
 
 1. Set working directory and load data 
 2. Examine descriptive statistics
@@ -255,7 +255,7 @@ OLS regression relies on several assumptions, including:
 
 ### Exercise 0
 
-**Regression with continuous outcomes**
+**Regression with continuous outcome**
 
 Open the datafile, ``gss.dta``
 
@@ -384,10 +384,10 @@ outreg2 [Model1 Model2] using csatprediction.xls, replace
 ```
 
 
-## Models with binary outcomes 
+## Models with binary outcome
 
 <div class="alert alert-info">
-**GOAL: To learn modeling with binary outcomes in Stata.** In particular:
+**GOAL: To learn modeling with binary outcome in Stata.** In particular:
 
 1. Set working directory and load data 
 2. Run summary statistics for outcome variable and predictors
@@ -459,7 +459,7 @@ logit sat_binary density percent expense, or
 
 ### Exercise 1
 
-**Regression with binary outcomes**
+**Regression with binary outcome**
 
 Use the data file, ``gss.dta``. Examine how age of a respondent (``age``), highest year of school completed (``degree``), hours per day watching TV (``tvhours``), and total family income for last year (``income``) relate to whether someone uses internet (``usenet``). 
 
@@ -584,7 +584,7 @@ regress bpsystol age i.diabetes i.region
 
 ### Margins by itself 
 
-* If you just type ```margins``` by itself, Stata will calculate the preducted value of ``bpsystol`` for each observation, then report the mean value of those predictions.  
+* If you just type ``margins`` by itself, Stata will calculate the preducted value of ``bpsystol`` for each observation, then report the mean value of those predictions.  
 
 ```{stata}
 margins
@@ -620,7 +620,7 @@ margins, at(age=(50(5)80))
 
 ### Marginsplot 
 
-* The previous step calculates the mean predicted value of ```bpsystol`` with age set to 50, 55, 60, 65, 70, 75, and 80. We can further use ``marginsplot`` to graph the results. 
+* The previous step calculates the mean predicted value of ``bpsystol`` with age set to 50, 55, 60, 65, 70, 75, and 80. We can further use ``marginsplot`` to graph the results. 
 
 ```{stata}
 marginsplot
@@ -695,7 +695,7 @@ marginsplot
 ## Margins with logistic regression 
   
 <div class="alert alert-info">
-  **GOAL: To learn margins of binary outcomes in Stata.** In particular:
+**GOAL: To learn margins of binary outcome in Stata.** In particular:
   
   1. Adjusted predictions at the means (APM) and Marginal effects at the mean (MEM)
   2. Marginal effects at the means (MEM) and Average marginal effects (AME)
